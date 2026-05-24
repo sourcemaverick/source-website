@@ -4,6 +4,7 @@ import HowItWorks from "@/components/HowItWorks";
 import TheApp from "@/components/ProductShowcase";
 import Demo from "@/components/AvatarSpotlight";
 import Waitlist from "@/components/Waitlist";
+import Partners from "@/components/Partners";
 import Footer from "@/components/Footer";
 import SectionDivider from "@/components/ui/SectionDivider";
 
@@ -21,6 +22,8 @@ export default function Home() {
         <Demo />
         <SectionDivider variant="gradient" />
         <Waitlist />
+        <SectionDivider variant="line" />
+        <Partners />
       </main>
       <Footer />
     </>
