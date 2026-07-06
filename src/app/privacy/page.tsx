@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "Privacy Policy — Source",
@@ -6,339 +8,439 @@ export const metadata: Metadata = {
     "How Source collects, uses, and protects your information.",
 };
 
-const EFFECTIVE_DATE = "May 11, 2026";
-const CONTACT_EMAIL = "anubhav@sourcemaverick.ai";
+const EFFECTIVE_DATE = "06/30/2026";
+const CONTACT_EMAIL = "animesh@sourcemaverick.ai";
 
 export default function PrivacyPolicyPage() {
   return (
-    <main className="relative mx-auto max-w-3xl px-6 py-16 text-neutral-200 sm:py-24">
-      <header className="mb-12">
-        <p className="font-mono text-xs uppercase tracking-[0.2em] text-neutral-400">
-          Source
-        </p>
-        <h1 className="mt-2 text-4xl font-light tracking-tight text-neutral-100 sm:text-5xl">
-          Privacy Policy
-        </h1>
-        <p className="mt-4 text-sm text-neutral-400">
-          Effective {EFFECTIVE_DATE}
-        </p>
-      </header>
+    <>
+      <Navbar />
+      <main className="relative mx-auto max-w-3xl px-6 py-16 text-neutral-200 sm:py-24">
+        <header className="mb-12">
+          <p className="font-mono text-xs uppercase tracking-[0.2em] text-neutral-400">
+            Source
+          </p>
+          <h1 className="mt-2 text-4xl font-light tracking-tight text-neutral-100 sm:text-5xl">
+            Privacy Policy
+          </h1>
+          <p className="mt-1 text-sm text-neutral-400">
+            Effective Date: {EFFECTIVE_DATE} · Last Updated: {EFFECTIVE_DATE}
+          </p>
+        </header>
 
-      <Section title="In one paragraph">
-        <p>
-          Source is a mobile and web app made by Super Real Inc. that lets you
-          have voice conversations with AI personas of contemplative teachers.
-          To make that work we collect your account email, the messages you
-          send, the audio you record, basic device timezone information, and
-          anonymous usage analytics. We use this only to run the conversation,
-          keep continuity across sessions, fix bugs, and improve the product.
-          We do not sell your data. You can ask us to delete your account and
-          conversations at any time by emailing{" "}
-          <a className="underline" href={`mailto:${CONTACT_EMAIL}`}>
-            {CONTACT_EMAIL}
-          </a>
-          .
-        </p>
-      </Section>
+        <nav className="mb-12 rounded-lg border border-neutral-800 bg-neutral-900/50 p-6">
+          <h2 className="mb-4 text-sm font-medium uppercase tracking-widest text-neutral-400">
+            Contents
+          </h2>
+          <ol className="grid grid-cols-1 gap-2 text-sm text-neutral-300 md:grid-cols-2">
+            <li><a href="#s1" className="text-blue-400 hover:underline">1. Introduction</a></li>
+            <li><a href="#s2" className="text-blue-400 hover:underline">2. Who We Are</a></li>
+            <li><a href="#s3" className="text-blue-400 hover:underline">3. Information We Collect</a></li>
+            <li><a href="#s4" className="text-blue-400 hover:underline">4. How We Use Your Information</a></li>
+            <li><a href="#s5" className="text-blue-400 hover:underline">5. Third-Party Service Providers</a></li>
+            <li><a href="#s6" className="text-blue-400 hover:underline">6. Data We Do Not Sell</a></li>
+            <li><a href="#s7" className="text-blue-400 hover:underline">7. Data Retention</a></li>
+            <li><a href="#s8" className="text-blue-400 hover:underline">8. Data Security</a></li>
+            <li><a href="#s9" className="text-blue-400 hover:underline">9. Your Rights</a></li>
+            <li><a href="#s10" className="text-blue-400 hover:underline">10. AI Transparency</a></li>
+            <li><a href="#s11" className="text-blue-400 hover:underline">11. Spiritual Personas</a></li>
+            <li><a href="#s12" className="text-blue-400 hover:underline">12. Wellness Platform</a></li>
+            <li><a href="#s13" className="text-blue-400 hover:underline">13. Children's Privacy</a></li>
+            <li><a href="#s14" className="text-blue-400 hover:underline">14. California Rights</a></li>
+            <li><a href="#s15" className="text-blue-400 hover:underline">15. GDPR (EU Users)</a></li>
+            <li><a href="#s16" className="text-blue-400 hover:underline">16. India (DPDP)</a></li>
+            <li><a href="#s17" className="text-blue-400 hover:underline">17. Changes</a></li>
+            <li><a href="#s18" className="text-blue-400 hover:underline">18. Contact Us</a></li>
+          </ol>
+        </nav>
 
-      <Section title="Who we are">
-        <p>
-          Source (&quot;the App&quot;, &quot;we&quot;, &quot;our&quot;) is
-          operated by Super Real Inc. (&quot;the Company&quot;). The data
-          controller for the purposes of GDPR and the business contact for the
-          purposes of CCPA is Super Real Inc.
-        </p>
-      </Section>
+        <Section id="s1" title="1. Introduction — What This Policy Covers">
+          <p>
+            Source is a conversational AI platform built by Super Real Inc. that brings ancient spiritual teachings to life through AI-powered personas. This Privacy Policy explains what personal information we collect when you use the Source app, why we collect it, how we use and protect it, and what rights and choices you have.
+          </p>
+          <p className="mt-3">
+            We have written this section in plain language first. The detailed legal obligations specific to your region (California, the European Union, and India) appear in Sections 14 through 16.
+          </p>
+          <Callout title="In brief">
+            We collect information you give us directly (name, email), information generated by your use of the app (conversations, usage patterns), and technical data from your device. We use this to provide and improve the Source experience. We do not sell your personal data. We do not use your conversations to train AI models. You can delete your account and all your data at any time from within the app.
+          </Callout>
+        </Section>
 
-      <Section title="What we collect">
-        <SubSection title="Information you provide">
-          <ul className="ml-5 list-disc space-y-1">
-            <li>
-              <strong>Account information.</strong> When you sign up we collect
-              your email address, display name, and a Firebase account
-              identifier. If you sign in with Google or Apple, we receive the
-              email address and display name those providers share.
-            </li>
-            <li>
-              <strong>Messages you send.</strong> The text of your
-              conversations with the AI persona is stored so the persona can
-              remember context across sessions.
-            </li>
-            <li>
-              <strong>Voice recordings.</strong> If you choose to use voice
-              input, the App captures short audio clips while you are
-              speaking. The audio is sent to a transcription service to be
-              converted to text, and then it is discarded. We do not retain
-              your voice recordings after transcription.
-            </li>
-            <li>
-              <strong>Generated audio replies.</strong> The persona&apos;s
-              spoken replies are synthesized as audio files and stored so you
-              can replay them in your conversation history.
-            </li>
+        <Section id="s2" title="2. Who We Are and How to Contact Us">
+          <p>Source is operated by Super Real Inc., a Delaware C-Corporation ("Super Real," "we," "us," or "our").</p>
+          <Table headers={["Contact Type", "Details"]} rows={[
+            ["Legal Entity", "Super Real Inc."],
+            ["Registered State", "Delaware, United States"],
+            ["Privacy Contact Email", "animesh@sourcemaverick.ai"],
+            ["Mailing Address", "16192 Coastal Hwy. Lewes, DE 19958, USA"],
+            ["GDPR Data Controller", "Super Real Inc. (see Section 15)"],
+            ["DPDP Grievance Officer", "Animesh Anand, animesh@sourcemaverick.ai (see Section 16)"]
+          ]} />
+          <p className="mt-4">We aim to respond to all privacy-related enquiries within 30 days of receipt.</p>
+        </Section>
+
+        <Section id="s3" title="3. Information We Collect">
+          <p>We collect the following categories of personal information:</p>
+
+          <SubSection title="3.1 Account and Identity Information">
+            <ul className="ml-5 list-disc space-y-2">
+              <li>Full name – provided at registration</li>
+              <li>Email address – required to create and maintain your account</li>
+              <li>Profile picture – optionally provided by you</li>
+              <li>Unique device identifier (UDID) – used for authentication and session management</li>
+            </ul>
+          </SubSection>
+
+          <SubSection title="3.2 Conversation Data">
+            <ul className="ml-5 list-disc space-y-2">
+              <li>The full text of your messages and AI persona responses across all sessions</li>
+              <li>Derived memory data – contextual profiles built from past conversations by Source's proprietary memory architecture, used to personalise your future sessions</li>
+            </ul>
+            <p className="mt-2 text-sm text-neutral-400">Conversation transcripts and derived memory data are retained for the lifetime of your account. For details on how and why, see Section 7 (Data Retention).</p>
+          </SubSection>
+
+          <SubSection title="3.3 Usage and Behavioural Data">
+            <ul className="ml-5 list-disc space-y-2">
+              <li>Session length, return frequency, and content engagement signals</li>
+              <li>Features accessed, screens visited, and session timestamps</li>
+              <li>All behavioural data is linked to your account identity</li>
+            </ul>
+          </SubSection>
+
+          <SubSection title="3.4 Technical and Device Data">
+            <ul className="ml-5 list-disc space-y-2">
+              <li>IP address, used to determine approximate geographic location (country or region level)</li>
+              <li>Device model, operating system version, and app version</li>
+              <li>Crash reports and diagnostic data, collected via Firebase SDK</li>
+              <li>App analytics, collected via Firebase Analytics</li>
+            </ul>
+          </SubSection>
+
+          <SubSection title="3.5 User Feedback">
+            <ul className="ml-5 list-disc space-y-2">
+              <li>Ratings, reactions, and written comments you provide on AI responses</li>
+            </ul>
+          </SubSection>
+
+          <SubSection title="3.6 Voice and Audio Input">
+            <p>If you choose to interact with Source using your voice, audio is processed entirely on your device using on-device speech recognition. Raw audio is never transmitted to Source servers or any third party. Only the resulting text transcript is sent to our systems. No audio recordings are retained.</p>
+          </SubSection>
+
+          <Callout title="What we do NOT collect">
+            Source does not collect precise GPS location, camera data, biometric identifiers, health information, or data from other apps. Payment card data is never collected or stored by Source – subscription billing is handled entirely by Apple or Google (see Section 3.7).
+          </Callout>
+
+          <SubSection title="3.7 Subscription and Payment Data">
+            <p>Source operates on a subscription model. All payment processing is handled by Apple In-App Purchase or Google Play Billing. Source does not collect, store, or have access to your payment card details.</p>
+          </SubSection>
+        </Section>
+
+        <Section id="s4" title="4. How We Use Your Information">
+          <p>We use personal information only for the following purposes:</p>
+          <Table headers={["Purpose", "Data Used", "Legal Basis (GDPR)"]} rows={[
+            ["Providing the Source service – including AI conversations, memory personalisation, and account management", "Account data, conversation data, derived memory data", "Performance of contract"],
+            ["Service improvement and quality – analysing usage patterns and feedback to improve the platform", "Usage data, feedback, anonymised conversation analytics", "Legitimate interests"],
+            ["Technical operations – crash reporting, debugging, and infrastructure stability", "Crash and diagnostic data, device data", "Legitimate interests"],
+            ["Communications – transactional emails such as account confirmation, policy updates, and service notices", "Email address", "Performance of contract / Legal obligation"],
+            ["Legal compliance and safety – responding to lawful legal process; detecting and preventing fraud or abuse", "Account data, usage data", "Legal obligation"]
+          ]} />
+          <p className="mt-4">We do not use your personal data for automated decision-making that produces legal or similarly significant effects on you.</p>
+        </Section>
+
+        <Section id="s5" title="5. Third-Party Service Providers">
+          <p>We share personal data only with the following service providers who are contractually obligated to process it only on our behalf and in accordance with this policy:</p>
+          <Table headers={["Provider", "Role", "Data Shared", "Model Training?"]} rows={[
+            ["Anthropic, Inc. (Claude API)", "AI response generation", "Conversation context necessary to generate responses", "No – Anthropic does not use Source user conversations for model training"],
+            ["Google Firebase", "Crash reporting and usage analytics", "App usage data, crash logs, device metadata", "N/A – governed by Google's privacy terms"],
+            ["Apple / Google", "Subscription payment processing", "Subscription status only – no payment card data", "N/A"]
+          ]} />
+          <p className="mt-4">We do not share personal data with advertisers, data brokers, or any third party for marketing purposes. We do not sell personal data.</p>
+          <Callout title="Note on Firebase">
+            Firebase Analytics links usage data to device identifiers. This constitutes a transfer of personal data to Google. Google's data processing terms govern Firebase's use of this data. By using Source, you acknowledge that app analytics data is processed by Google under Firebase's standard terms.
+          </Callout>
+        </Section>
+
+        <Section id="s6" title="6. Data We Do Not Sell or Use for Advertising">
+          <p>Source does not:</p>
+          <ul className="ml-5 list-disc space-y-2">
+            <li>Sell your personal data to any third party</li>
+            <li>Share your conversational data with advertisers or marketing platforms</li>
+            <li>Use your personal data for behavioural advertising, targeted advertising, or profiling for commercial purposes</li>
+            <li>Allow third parties to collect your data through Source for their own advertising purposes</li>
           </ul>
-        </SubSection>
+          <p className="mt-4">This applies equally to California residents' rights under CCPA/CPRA. See Section 14 for your specific California rights.</p>
+        </Section>
 
-        <SubSection title="Information we collect automatically">
-          <ul className="ml-5 list-disc space-y-1">
-            <li>
-              <strong>Device timezone.</strong> Used to greet you with the
-              correct time of day.
-            </li>
-            <li>
-              <strong>Usage analytics.</strong> We use Firebase Analytics to
-              record anonymous events (e.g. screen visits, sign-up funnel,
-              session duration) so we can understand how the App is used.
-            </li>
-            <li>
-              <strong>Crash and error logs.</strong> If the App crashes or
-              errors, basic diagnostic information is sent to our backend so
-              we can fix the bug.
-            </li>
-            <li>
-              <strong>IP address and approximate region.</strong> Standard
-              server-log information collected by our hosting provider.
-            </li>
+        <Section id="s7" title="7. Data Retention">
+          <Table headers={["Data Type", "Retention Period", "Upon Account Deletion"]} rows={[
+            ["Conversation transcripts", "Duration of active account", "Deleted within 30 days"],
+            ["Derived memory / context profiles", "Duration of active account", "Deleted within 30 days"],
+            ["Profile data (name, photo, email)", "Duration of active account", "Deleted within 30 days"],
+            ["Usage and behavioural data", "Duration of active account", "Deleted within 30 days"],
+            ["Voice / audio input", "Not retained – cleared on-device immediately after transcription", "N/A"],
+            ["Crash and diagnostic data (Firebase)", "Per Google/Firebase retention settings", "Per Google/Firebase retention settings"]
+          ]} />
+          <p className="mt-4">No personal data is retained for legal or safety purposes following account deletion unless we are required to do so by a binding legal obligation.</p>
+          <Callout title="Note on indefinite retention">
+            Conversation transcripts and memory profiles are retained for the full duration of your account. If you have concerns about long-term retention, you can reset your AI memory at any time from within the app without deleting your account. You can also delete your account permanently, which triggers deletion of all personal data within 30 days.
+          </Callout>
+        </Section>
+
+        <Section id="s8" title="8. Data Security">
+          <p>We implement the following technical and organisational measures to protect your personal data:</p>
+          <ul className="ml-5 list-disc space-y-2">
+            <li>Encryption in transit: All data transmitted between the Source app and our servers uses TLS/HTTPS encryption</li>
+            <li>Encryption at rest: User data stored on Source servers is encrypted using AES-256</li>
+            <li>Access controls: Conversation data is accessible internally only to personnel who require it for technical operations</li>
+            <li>Incident response: We maintain a data breach response plan with defined procedures for containment, notification, and remediation</li>
           </ul>
-        </SubSection>
+          <p className="mt-4">No method of electronic transmission or storage is completely secure. While we take these measures seriously, we cannot guarantee absolute security. In the event of a data breach that is likely to result in a risk to your rights and freedoms, we will notify you and relevant authorities in accordance with applicable law.</p>
+        </Section>
 
-        <p className="mt-4 text-sm text-neutral-400">
-          We do <strong>not</strong> collect: contacts, calendar, photos
-          beyond a profile avatar, location coordinates, advertising
-          identifiers, or contact lists. We do not access your device
-          microphone except while you are actively recording a message in the
-          App.
-        </p>
-      </Section>
+        <Section id="s9" title="9. Your Rights and Choices">
+          <p>You have the following rights regarding your personal data:</p>
+          <Table headers={["Right", "What It Means", "How to Exercise"]} rows={[
+            ["Access", "Request a copy of the personal data we hold about you", "Contact animesh@sourcemaverick.ai"],
+            ["Correction", "Ask us to correct inaccurate or incomplete data", "In-app profile settings or via email"],
+            ["Deletion", "Request deletion of your account and all associated personal data", "In-app account deletion or via email"],
+            ["Export", "Download a copy of your conversation history", "In-app export feature"],
+            ["Memory reset", "Reset your AI memory and context profile without deleting your account", "In-app memory settings"],
+            ["Opt-out of analytics", "Opt out of non-essential usage analytics", "In-app settings or contact us"]
+          ]} />
+          <p className="mt-4">We will respond to all rights requests within 30 days. If you are an EU user or an Indian user, additional rights apply – see Sections 15 and 16 respectively.</p>
+        </Section>
 
-      <Section title="How we use your information">
-        <ul className="ml-5 list-disc space-y-1">
-          <li>To create and maintain your account.</li>
-          <li>
-            To run the conversation: passing your messages to language and
-            speech models that generate the persona&apos;s replies.
-          </li>
-          <li>
-            To remember context across sessions, so the persona can reference
-            things you have shared previously.
-          </li>
-          <li>
-            To diagnose and fix problems with the App.
-          </li>
-          <li>
-            To understand aggregate product usage so we can improve the App.
-          </li>
-          <li>
-            To send you in-app notifications related to your conversations
-            (e.g. a reflection from a previous session). We do not send
-            marketing emails.
-          </li>
-        </ul>
-      </Section>
+        <Section id="s10" title="10. AI Transparency and Disclosure">
+          <p>Source is an artificial intelligence platform. The following disclosures are made in compliance with applicable law and in the interest of your informed use of the service.</p>
 
-      <Section title="Third-party processors">
-        <p>
-          Source does not run all of its infrastructure in-house. We use the
-          following sub-processors. Each receives only the data needed for
-          their specific function:
-        </p>
-        <ul className="ml-5 mt-3 list-disc space-y-1">
-          <li>
-            <strong>Google Firebase</strong> (auth, analytics, crash
-            reporting, push notifications). Receives: email, account
-            identifier, anonymous events.
-          </li>
-          <li>
-            <strong>Google Cloud Platform</strong> (server hosting, database,
-            audio file storage). Receives: messages, account identifier,
-            generated audio replies.
-          </li>
-          <li>
-            <strong>Anthropic</strong> (language model that generates the
-            persona&apos;s replies). Receives: your messages and a system
-            prompt. Anthropic processes inputs in transit and does not train
-            on customer API data.
-          </li>
-          <li>
-            <strong>Groq</strong> (speech-to-text transcription). Receives:
-            short audio clips during voice input. Used only to convert speech
-            to text.
-          </li>
-          <li>
-            <strong>ElevenLabs</strong> (text-to-speech). Receives: the text
-            of the persona&apos;s reply. Returns synthesized audio.
-          </li>
-          <li>
-            <strong>Qdrant Cloud</strong> (vector database). Receives: derived
-            embeddings of your messages used for memory retrieval.
-          </li>
-        </ul>
-        <p className="mt-3">
-          We do not share your information with any party outside this list,
-          except where required by law (for example, in response to a valid
-          legal order).
-        </p>
-      </Section>
+          <SubSection title="10.1 You Are Interacting with AI, Not a Human">
+            <p>All conversations on Source are with AI constructs. You are not speaking with a human being, a living spiritual teacher, or the actual consciousness or spirit of any historical individual. Source's personas are AI systems trained on the publicly available teachings, writings, and documented philosophy of historical spiritual figures. They are not channels to, representations of, or communications from, any living or deceased person.</p>
+            <p className="mt-2">In compliance with New York law (effective November 2025), Source will periodically remind users during interactions that they are engaging with an AI system.</p>
+            <p className="mt-2">In compliance with California AB 3030 (effective January 2025), Source discloses that communications generated within the app are produced by artificial intelligence.</p>
+          </SubSection>
 
-      <Section title="Voice recordings — explicit notice">
-        <p>
-          Because microphone access is sensitive, here is the full lifecycle
-          of a voice recording in plain language:
-        </p>
-        <ol className="ml-5 mt-3 list-decimal space-y-1">
-          <li>You tap and hold the microphone button. The App records audio.</li>
-          <li>
-            When you release the button, the audio file is sent over an
-            encrypted connection to our backend.
-          </li>
-          <li>
-            Our backend forwards the audio to Groq for transcription.
-          </li>
-          <li>
-            Groq returns the text. Our backend then deletes the audio file.
-          </li>
-          <li>
-            The text is processed as your message and stored in the
-            conversation. The audio itself is not retained.
-          </li>
-        </ol>
-        <p className="mt-3">
-          The App does not record audio when you are not actively pressing
-          the microphone button.
-        </p>
-      </Section>
+          <SubSection title="10.2 AI Responses Are Not Infallible">
+            <p>AI-generated responses may not always be accurate, complete, or appropriate for your specific circumstances. Source's personas offer spiritual and contemplative guidance rooted in their respective traditions; they do not provide personalised professional advice. For matters of health, law, finance, or personal safety, please consult a qualified professional.</p>
+          </SubSection>
 
-      <Section title="Data retention">
-        <ul className="ml-5 list-disc space-y-1">
-          <li>
-            <strong>Account information.</strong> Retained until you delete
-            your account.
-          </li>
-          <li>
-            <strong>Conversation messages and audio replies.</strong> Retained
-            until you delete your account, after which they are removed
-            within 30 days.
-          </li>
-          <li>
-            <strong>Voice recordings.</strong> Not retained — discarded after
-            transcription, typically within seconds.
-          </li>
-          <li>
-            <strong>Usage analytics.</strong> Retained for up to 14 months in
-            an anonymized form by Firebase.
-          </li>
-          <li>
-            <strong>Crash logs.</strong> Retained for up to 90 days.
-          </li>
-        </ul>
-      </Section>
+          <SubSection title="10.3 Source's Memory System">
+            <p>Source uses a proprietary persistent memory architecture that retains contextual information from your previous conversations. This allows Source to personalise your experience over time – recalling earlier context much as an experienced teacher would. When you return to Source, the AI you interact with will have memory of your prior sessions.</p>
+            <p className="mt-2">You have the right to reset your memory profile at any time from within the app without deleting your account. Memory data is deleted within 30 days of account deletion.</p>
+          </SubSection>
+        </Section>
 
-      <Section title="Your rights">
-        <p>
-          Depending on where you live, you may have the right to access,
-          correct, export, restrict, or delete your personal information, and
-          to object to certain processing. Source honors these rights for all
-          users regardless of jurisdiction.
-        </p>
-        <p className="mt-3">
-          To exercise any of these rights, email us at{" "}
-          <a className="underline" href={`mailto:${CONTACT_EMAIL}`}>
-            {CONTACT_EMAIL}
-          </a>
-          . We typically respond within 7 days. There is also an in-app
-          &quot;Delete account&quot; option that removes your account and all
-          associated conversation data.
-        </p>
-      </Section>
+        <Section id="s11" title="11. Spiritual Master Personas — Identity and Authorisation">
+          <p>Source creates AI personas inspired by and built upon the teachings of historical spiritual figures. The following principles govern how we create and present these personas.</p>
 
-      <Section title="Security">
-        <p>
-          All connections between the App and our backend use TLS. Account
-          credentials are managed by Firebase Authentication and are never
-          stored in plaintext on our servers. Conversation data is stored in
-          Google Cloud SQL and Qdrant Cloud, both with at-rest encryption.
-        </p>
-        <p className="mt-3">
-          No system is perfectly secure. If we ever become aware of a breach
-          affecting your data, we will notify you by email and through the
-          App as soon as practicable, and within the timelines required by
-          applicable law.
-        </p>
-      </Section>
+          <SubSection title="11.1 Partnership-Based Creation">
+            <p>Source works in formal partnership with organisations connected to the lineages and estates of the spiritual masters whose teachings inform our personas. We obtain documented authorisation covering the use of each master's name, publicly available teachings, and identity as the basis for an AI construct, prior to making any such persona available in the app.</p>
+          </SubSection>
 
-      <Section title="International data transfers">
-        <p>
-          Source&apos;s servers are hosted in Google Cloud&apos;s
-          <code className="px-1 font-mono text-sm">us-central1</code> region.
-          Sub-processors are located primarily in the United States. If you
-          access the App from outside the United States, your information is
-          transferred to and processed in the United States. By using the
-          App you consent to this transfer.
-        </p>
-      </Section>
+          <SubSection title="11.2 What Our Personas Are and Are Not">
+            <ul className="ml-5 list-disc space-y-2">
+              <li>Source personas ARE AI systems inspired by the documented teachings and philosophy of historical spiritual figures</li>
+              <li>Source personas are NOT channels to, direct representations of, or communications from, any living or deceased individual</li>
+              <li>Source does NOT claim that any persona constitutes contact with, or communication from, any spiritual master, living or deceased</li>
+              <li>Source personas are educational and contemplative tools, not representations of any actual person</li>
+            </ul>
+          </SubSection>
 
-      <Section title="Children">
-        <p>
-          Source is not directed at children under 13, and we do not
-          knowingly collect personal information from children under 13. If
-          we learn that we have inadvertently collected such information, we
-          will delete it. If you believe a child has provided us with
-          personal information, please contact us at{" "}
-          <a className="underline" href={`mailto:${CONTACT_EMAIL}`}>
-            {CONTACT_EMAIL}
-          </a>
-          .
-        </p>
-      </Section>
+          <SubSection title="11.3 Right of Publicity Compliance">
+            <p>Source's authorisation process is designed to comply with applicable right of publicity laws, including New York's posthumous right of publicity law (enacted December 2025) and California AB 1836. We obtain written authorisation from relevant lineage organisations or estates prior to launch of each persona. If you believe a persona infringes applicable right of publicity law, please contact us at animesh@sourcemaverick.ai.</p>
+          </SubSection>
+        </Section>
 
-      <Section title="Health and well-being disclaimer">
-        <p>
-          Source is a contemplative companion. It is not a medical device,
-          mental-health service, or substitute for professional advice. The
-          AI does not diagnose, treat, or counsel. If you are in crisis or
-          need urgent support, please contact local emergency services or a
-          qualified human professional.
-        </p>
-      </Section>
+        <Section id="s12" title="12. Source Is a Wellness Platform – Not a Therapeutic Service">
+          <p>This is one of the most important disclosures in this policy. Please read it carefully.</p>
 
-      <Section title="Changes to this policy">
-        <p>
-          We will update this page when our practices change. Material
-          changes will be announced in the App. The &quot;Effective&quot;
-          date at the top of this page reflects the most recent revision.
-        </p>
-      </Section>
+          <SubSection title="12.1 What Source Is">
+            <ul className="ml-5 list-disc space-y-2">
+              <li>A wellness and personal development platform</li>
+              <li>A tool for spiritual guidance, contemplative reflection, and self-exploration rooted in ancient traditions</li>
+              <li>A supplement to – not a replacement for – professional mental health care, medical treatment, or crisis intervention</li>
+            </ul>
+          </SubSection>
 
-      <Section title="Contact">
-        <p>
-          For privacy questions, data requests, or any other concern, email{" "}
-          <a className="underline" href={`mailto:${CONTACT_EMAIL}`}>
-            {CONTACT_EMAIL}
-          </a>
-          .
-        </p>
-      </Section>
+          <SubSection title="12.2 What Source Is Not">
+            <ul className="ml-5 list-disc space-y-2">
+              <li>Source is NOT a licensed mental health service, therapy, counselling, or psychiatric platform</li>
+              <li>Source is NOT a medical device and does not diagnose, treat, cure, or prevent any medical or psychological condition</li>
+              <li>Source is NOT a crisis intervention or emergency service</li>
+              <li>Source is NOT a substitute for professional psychological, psychiatric, or medical care</li>
+              <li>Source is NOT covered by HIPAA. Source is not a healthcare provider. Conversations with Source do not carry HIPAA protection</li>
+              <li>Source conversations are NOT legally privileged. Unlike sessions with a licensed therapist, your conversations with Source could be subject to lawful legal process</li>
+            </ul>
+          </SubSection>
 
-      <footer className="mt-16 border-t border-neutral-800 pt-8 text-sm text-neutral-500">
-        <p>
-          © {new Date().getFullYear()} Super Real Inc. All rights reserved.
-        </p>
-      </footer>
-    </main>
+          <Callout title="California AB 489 Compliance (effective 2025)">
+            California law prohibits AI systems from presenting themselves as licensed healthcare providers. No Source persona uses titles such as therapist, psychologist, counselor, psychiatrist, or doctor, or implies that it is a licensed practitioner of any kind.
+          </Callout>
+
+          <SubSection title="12.3 If You Are in Crisis">
+            <p>Source does not monitor conversations in real time and cannot provide emergency intervention. If you are experiencing a mental health crisis, thoughts of self-harm, or any emergency, please contact:</p>
+            <ul className="ml-5 list-disc space-y-1 text-sm">
+              <li>Emergency services: 911 (USA), 112 (EU), 112 (India)</li>
+              <li>988 Suicide and Crisis Lifeline (USA): Call or text 988</li>
+              <li>Crisis Text Line (USA): Text HOME to 741741</li>
+              <li>iCall (India): +91-9152987821</li>
+              <li>Samaritans (UK): 116 123</li>
+            </ul>
+          </SubSection>
+        </Section>
+
+        <Section id="s13" title="13. Children's Privacy">
+          <p>Source is intended for users aged 13 and older. We do not knowingly collect personal data from children under the age of 13.</p>
+          <ul className="ml-5 list-disc space-y-2">
+            <li>Users must confirm they are at least 13 years old at registration</li>
+            <li>If we become aware that a user is under 13, their account and all associated data will be deleted promptly</li>
+            <li>If you believe a child under 13 has created a Source account, please contact us at animesh@sourcemaverick.ai</li>
+          </ul>
+          <p className="mt-4">For users in the European Union: GDPR Article 8 requires parental consent for users below the applicable age of digital consent in their country (which varies between 13 and 16 depending on the EU member state). EU users between 13 and 16 may be required to obtain parental consent before using Source. We will implement age verification or parental consent mechanisms in our EU rollout in compliance with these requirements.</p>
+          <p className="mt-4">Source's content addresses mature philosophical and existential themes. The platform is not designed for, marketed to, or appropriate for minors.</p>
+        </Section>
+
+        <Section id="s14" title="14. California Privacy Rights (CCPA / CPRA)">
+          <p>This section applies to residents of California and supplements the rights described in Section 9.</p>
+
+          <SubSection title="14.1 Categories of Personal Information We Collect">
+            <p>Under CCPA/CPRA, the categories of personal information we collect include: identifiers (name, email, device ID, IP address); internet or other network activity (usage data, session data, crash logs); audio information (voice input, processed on-device only, not retained); inferences drawn from personal information (derived memory and contextual profiles); and commercial information (subscription status).</p>
+          </SubSection>
+
+          <SubSection title="14.2 Do Not Sell or Share My Personal Information">
+            <p>Source does not sell your personal information. Source does not share your personal information with third parties for cross-context behavioural advertising. You therefore have no opt-out to exercise for sale or sharing – we do not engage in these practices. We will update this section if our practices change.</p>
+          </SubSection>
+
+          <SubSection title="14.3 Your CCPA / CPRA Rights">
+            <ul className="ml-5 list-disc space-y-2">
+              <li>Right to Know: Request disclosure of the categories and specific pieces of personal information we have collected about you</li>
+              <li>Right to Delete: Request deletion of your personal information, subject to limited legal exceptions</li>
+              <li>Right to Correct: Request correction of inaccurate personal information</li>
+              <li>Right to Opt-Out of Sale/Sharing: Not applicable – we do not sell or share personal information</li>
+              <li>Right of Non-Discrimination: We will not discriminate against you for exercising any of your CCPA rights</li>
+            </ul>
+            <p className="mt-2">To exercise your California rights, contact us at animesh@sourcemaverick.ai or use the in-app account management tools. We will respond within 45 days (extendable by an additional 45 days with notice where reasonably necessary).</p>
+          </SubSection>
+        </Section>
+
+        <Section id="s15" title="15. European Union Users (GDPR)">
+          <p>This section applies to users in the European Economic Area (EEA), the United Kingdom, and Switzerland, and supplements Section 9.</p>
+
+          <SubSection title="15.1 Data Controller">
+            <p>Super Real Inc. is the data controller for personal data processed through Source. Our contact details are in Section 2.</p>
+          </SubSection>
+
+          <SubSection title="15.2 Legal Bases for Processing">
+            <Table headers={["Processing Activity", "Legal Basis"]} rows={[
+              ["Providing the Source service (conversations, account management, memory)", "Performance of contract (Art. 6(1)(b))"],
+              ["Service improvement and analytics", "Legitimate interests (Art. 6(1)(f)) – to improve the quality of our platform"],
+              ["Transactional communications", "Performance of contract (Art. 6(1)(b))"],
+              ["Legal compliance", "Legal obligation (Art. 6(1)(c))"],
+              ["Crash reporting and technical diagnostics", "Legitimate interests (Art. 6(1)(f)) – to maintain service stability"]
+            ]} />
+          </SubSection>
+
+          <SubSection title="15.3 International Data Transfers">
+            <p>Source is operated from the United States. If you are located in the EEA, your personal data will be transferred to and processed in the United States. We implement appropriate safeguards for such transfers, including Standard Contractual Clauses (SCCs) as approved by the European Commission, where applicable. For transfers to Anthropic and Google Firebase, we rely on the data processing agreements and transfer mechanisms established by those providers.</p>
+          </SubSection>
+
+          <SubSection title="15.4 Your GDPR Rights">
+            <p>In addition to the rights in Section 9, EU users have the right to:</p>
+            <ul className="ml-5 list-disc space-y-2">
+              <li>Object to processing based on legitimate interests</li>
+              <li>Restriction of processing in certain circumstances</li>
+              <li>Lodge a complaint with your national data protection authority (DPA)</li>
+            </ul>
+          </SubSection>
+
+          <SubSection title="15.5 Data Breach Notification">
+            <p>In the event of a personal data breach that is likely to result in a risk to your rights and freedoms, we will notify the relevant supervisory authority within 72 hours of becoming aware, and will notify affected users without undue delay where required.</p>
+          </SubSection>
+
+          <SubSection title="15.6 Data Protection Officer">
+            <p>Given our current scale, we have assessed that a formal DPO appointment is not yet required under GDPR. We will appoint a DPO when our processing activities require it. Privacy enquiries can be directed to animesh@sourcemaverick.ai</p>
+          </SubSection>
+        </Section>
+
+        <Section id="s16" title="16. Indian Users (Digital Personal Data Protection Act, 2023)">
+          <p>This section applies to users in India and supplements Section 9.</p>
+
+          <SubSection title="16.1 Consent-Based Processing">
+            <p>Under India's Digital Personal Data Protection Act (DPDP Act), 2023, we process your personal data on the basis of your free, specific, informed, unconditional, and unambiguous consent, given at the time of registration. You may withdraw consent at any time by deleting your account. Withdrawal of consent will not affect the lawfulness of processing carried out prior to withdrawal.</p>
+          </SubSection>
+
+          <SubSection title="16.2 Grievance Officer">
+            <p>In compliance with the DPDP Act, we have designated a Grievance Officer for Indian users:</p>
+            <ul className="ml-5 list-disc space-y-2">
+              <li>Name: Animesh Anand</li>
+              <li>Email: animesh@sourcemaverick.ai</li>
+              <li>Response time: We will acknowledge grievances within 48 hours and resolve them within 30 days</li>
+            </ul>
+          </SubSection>
+
+          <SubSection title="16.3 Your Rights Under the DPDP Act">
+            <ul className="ml-5 list-disc space-y-2">
+              <li>Right to access information about your personal data we hold</li>
+              <li>Right to correction and erasure of inaccurate or incomplete data</li>
+              <li>Right to grievance redressal through our Grievance Officer</li>
+              <li>Right to nominate another person to exercise your rights in the event of your death or incapacity</li>
+            </ul>
+          </SubSection>
+
+          <SubSection title="16.4 Data Localisation">
+            <p>We are monitoring guidance from the Indian government regarding data localisation requirements under the DPDP Act. We will update this section and our data handling practices as regulatory requirements are clarified and come into force.</p>
+          </SubSection>
+
+          <SubSection title="16.5 Cross-Border Data Transfers">
+            <p>Your personal data may be transferred to and processed in the United States, where our servers and service providers (including Anthropic and Google Firebase) are located. We will comply with applicable requirements under the DPDP Act regarding cross-border data transfers, including any restrictions notified by the Central Government.</p>
+          </SubSection>
+        </Section>
+
+        <Section id="s17" title="17. Changes to This Policy">
+          <p>We may update this Privacy Policy from time to time. When we make material changes, we will:</p>
+          <ul className="ml-5 list-disc space-y-2">
+            <li>Notify you through an in-app notification at least 30 days before the change takes effect</li>
+            <li>Send a notification to the email address associated with your account</li>
+            <li>Update the Effective Date at the top of this document</li>
+          </ul>
+          <p className="mt-4">Your continued use of Source after the effective date of an updated policy constitutes your acceptance of the changes. If you do not agree with a material change, you may delete your account before the effective date.</p>
+        </Section>
+
+        <Section id="s18" title="18. Contact Us">
+          <p>For any questions, concerns, or requests relating to this Privacy Policy or your personal data, please contact us:</p>
+          <Table headers={["Method", "Details"]} rows={[
+            ["Privacy email", "animesh@sourcemaverick.ai"],
+            ["Mailing address", "Super Real Inc., 16192 Coastal Hwy. Lewes, DE 19958, USA"],
+            ["In-app", "Settings – Privacy – Contact Us"],
+            ["Response commitment", "We aim to respond within 30 days of receiving your request"]
+          ]} />
+          <p className="mt-4">If you are not satisfied with our response, you have the right to escalate your complaint to the relevant data protection authority in your jurisdiction (see Sections 14–16 for jurisdiction-specific details).</p>
+        </Section>
+
+        <footer className="mt-16 border-t border-neutral-800 pt-8 text-sm text-neutral-500">
+          <p>
+            Super Real Inc. · Source App · Privacy Policy · Version 1.0<br/>
+            © {new Date().getFullYear()} Super Real Inc. All rights reserved.
+          </p>
+        </footer>
+      </main>
+      <Footer />
+    </>
   );
 }
 
 function Section({
+  id,
   title,
   children,
 }: {
+  id?: string;
   title: string;
   children: React.ReactNode;
 }) {
   return (
-    <section className="mb-10">
-      <h2 className="mb-3 text-xl font-medium text-neutral-100">{title}</h2>
-      <div className="space-y-2 text-base leading-relaxed text-neutral-300">
+    <section id={id} className="mb-10 scroll-mt-20">
+      <h2 className="mb-4 text-2xl font-light text-neutral-100">{title}</h2>
+      <div className="space-y-3 text-base leading-relaxed text-neutral-300">
         {children}
       </div>
     </section>
@@ -354,10 +456,71 @@ function SubSection({
 }) {
   return (
     <div className="mb-4">
-      <h3 className="mb-1 text-base font-medium text-neutral-200">{title}</h3>
+      <h3 className="mb-2 text-lg font-medium text-neutral-200">{title}</h3>
       <div className="space-y-2 text-base leading-relaxed text-neutral-300">
         {children}
       </div>
+    </div>
+  );
+}
+
+function Callout({
+  title,
+  children,
+}: {
+  title: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="my-6 border-l-4 border-neutral-600 bg-neutral-900/50 p-4">
+      <p className="mb-2 font-medium text-neutral-200">{title}</p>
+      <div className="space-y-2 text-sm leading-relaxed text-neutral-300">
+        {children}
+      </div>
+    </div>
+  );
+}
+
+function Table({
+  headers,
+  rows,
+}: {
+  headers: string[];
+  rows: (string | React.ReactNode)[][];
+}) {
+  return (
+    <div className="my-4 overflow-x-auto">
+      <table className="w-full text-sm">
+        <thead>
+          <tr className="border-b border-neutral-700">
+            {headers.map((header) => (
+              <th
+                key={header}
+                className="bg-neutral-900 px-4 py-3 text-left font-medium text-neutral-100"
+              >
+                {header}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((row, idx) => (
+            <tr
+              key={idx}
+              className="border-b border-neutral-800 hover:bg-neutral-900/30"
+            >
+              {row.map((cell, cellIdx) => (
+                <td
+                  key={cellIdx}
+                  className="px-4 py-3 text-neutral-300"
+                >
+                  {cell}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }
