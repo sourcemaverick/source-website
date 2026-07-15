@@ -1,42 +1,45 @@
 import type { Metadata } from "next";
-import { Sora, DM_Mono } from "next/font/google";
+import { Lora, Poppins } from "next/font/google";
 import "./globals.css";
 import CursorGlow from "@/components/ui/CursorGlow";
 
-const sora = Sora({
+/* Elegant book serif — display headlines & poetic italics */
+const lora = Lora({
   subsets: ["latin"],
-  weight: ["200", "300", "400", "500", "600", "700"],
-  variable: "--font-sora",
+  weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
+  variable: "--font-serif",
   display: "swap",
 });
 
-const dmMono = DM_Mono({
+/* Geometric sans — statements, UI & body */
+const poppins = Poppins({
   subsets: ["latin"],
-  weight: ["300", "400", "500"],
-  variable: "--font-dm-mono",
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-sans",
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Source — Deep Personality Cloning",
+  title: "Source — Walk with a spiritual master",
   description:
-    "Experience genuine, immersive conversations with AI avatars powered by deep personality cloning. Realistic voices, expressions, and presence.",
+    "What becomes possible when nothing inside you is holding you back? Source lets you walk with a spiritual master and discover the clarity, purpose, and peace that emerge when the noise begins to settle.",
   metadataBase: new URL("https://source.ai"),
   openGraph: {
-    title: "Source — Deep Personality Cloning",
+    title: "Source — Walk with a spiritual master",
     description:
-      "Face-to-face conversations with AI avatars of extraordinary people. Their voice, their expressions, their presence.",
+      "Speak naturally with your spiritual master, anytime you need guidance. Deeply personal conversations that remember your journey and evolve with you over time.",
     type: "website",
     siteName: "Source",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Source — Deep Personality Cloning",
+    title: "Source — Walk with a spiritual master",
     description:
-      "Face-to-face conversations with AI avatars of extraordinary people.",
+      "Begin the journey back to yourself. Walk with a spiritual master and discover clarity, purpose, and peace.",
   },
   other: {
-    "theme-color": "#0a0a0a",
+    "theme-color": "#0a070d",
   },
 };
 
@@ -46,7 +49,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${sora.variable} ${dmMono.variable} h-full antialiased`}>
+    <html lang="en" className={`${lora.variable} ${poppins.variable} h-full antialiased`}>
       <body className="min-h-full" suppressHydrationWarning>
         <div className="grain-overlay" aria-hidden="true" />
         <div className="atmo-blob atmo-1" aria-hidden="true" />

@@ -2,23 +2,49 @@
 
 /* ── Design Tokens ── */
 :root {
-  --bg-base:       #0a0a0a;
-  --bg-elevated:   #111111;
-  --bg-overlay:    rgba(10, 10, 10, 0.85);
+  /* Cosmic base */
+  --bg-base:       #0a070d;
+  --bg-deep:       #060409;
+  --bg-elevated:   #120e17;
+  --bg-overlay:    rgba(10, 7, 13, 0.85);
 
-  --accent:        #e05a8a;
-  --accent-deep:   #c43d6e;
-  --accent-light:  #f2839f;
-  --accent-glow:   rgba(224, 90, 138, 0.15);
-  --accent-subtle: rgba(224, 90, 138, 0.06);
+  /* Purple / maroon panels */
+  --panel:         #1a1320;
+  --panel-2:       #221829;
+  --panel-warm-a:  #201826;
+  --panel-warm-b:  #3a2130;
 
-  --text-primary:   #f0ece8;
-  --text-secondary: #a09a94;
-  --text-muted:     #706b66;
-  --text-disabled:  #4a4643;
+  /* Pink / magenta accent */
+  --pink:          #e6538a;
+  --pink-light:    #f4a9c4;
+  --pink-deep:     #c33068;
+  --pink-glow:     rgba(230, 83, 138, 0.16);
+  --pink-subtle:   rgba(230, 83, 138, 0.06);
+
+  /* Amber / gold accent */
+  --gold:          #cba876;
+  --gold-light:    #e3caa0;
+  --gold-deep:     #b8935c;
+  --gold-glow:     rgba(203, 168, 118, 0.18);
+
+  /* Warm ember (hero energy) */
+  --ember:         #f0913f;
+
+  /* Legacy alias (kept so shared UI keeps working) */
+  --accent:        var(--pink);
+  --accent-deep:   var(--pink-deep);
+  --accent-light:  var(--pink-light);
+  --accent-glow:   var(--pink-glow);
+  --accent-subtle: var(--pink-subtle);
+
+  --text-primary:   #f4f0ea;
+  --text-secondary: #b6acbc;
+  --text-muted:     #837889;
+  --text-disabled:  #524a58;
 
   --border:        rgba(255, 255, 255, 0.08);
-  --border-hover:  rgba(224, 90, 138, 0.30);
+  --border-hover:  rgba(230, 83, 138, 0.32);
+  --border-gold:   rgba(203, 168, 118, 0.30);
   --border-subtle: rgba(255, 255, 255, 0.04);
 
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
@@ -28,16 +54,18 @@
 @theme inline {
   --color-background: var(--bg-base);
   --color-foreground: var(--text-primary);
-  --color-accent: var(--accent);
-  --color-accent-deep: var(--accent-deep);
-  --color-accent-light: var(--accent-light);
+  --color-accent: var(--pink);
+  --color-accent-deep: var(--pink-deep);
+  --color-accent-light: var(--pink-light);
+  --color-gold: var(--gold);
+  --color-gold-light: var(--gold-light);
   --color-text-secondary: var(--text-secondary);
   --color-text-muted: var(--text-muted);
-  --font-sans: var(--font-sora), sans-serif;
-  --font-mono: var(--font-dm-mono), monospace;
+  --font-sans: var(--font-sans), sans-serif;
+  --font-serif: var(--font-serif), Georgia, serif;
 }
 
-/* ── Base reset & global styles — inside @layer so Tailwind utilities win ── */
+/* ── Base reset & global styles ── */
 @layer base {
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -50,27 +78,31 @@
   body {
     background: var(--bg-base);
     color: var(--text-primary);
-    font-family: var(--font-sora), sans-serif;
+    font-family: var(--font-sans), sans-serif;
     overflow-x: hidden;
   }
 
   ::selection {
-    background: rgba(224, 90, 138, 0.25);
+    background: rgba(230, 83, 138, 0.28);
     color: #fff;
   }
 
   ::-webkit-scrollbar { width: 4px; }
   ::-webkit-scrollbar-track { background: transparent; }
-  ::-webkit-scrollbar-thumb { background: rgba(224, 90, 138, 0.2); border-radius: 2px; }
+  ::-webkit-scrollbar-thumb { background: rgba(230, 83, 138, 0.2); border-radius: 2px; }
 
   :focus-visible {
-    outline: 2px solid var(--accent);
+    outline: 2px solid var(--pink);
     outline-offset: 2px;
   }
 }
 
-/* ── Component styles — inside @layer so Tailwind utilities can override ── */
+/* ── Component styles ── */
 @layer components {
+  /* Serif / sans helpers */
+  .font-serif { font-family: var(--font-serif), Georgia, serif; }
+  .font-display { font-family: var(--font-serif), Georgia, serif; font-weight: 500; }
+
   /* ── Glass card ── */
   .glass-card {
     background: rgba(255, 255, 255, 0.02);
@@ -83,51 +115,69 @@
     overflow: hidden;
   }
 
-  .glass-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent 10%, rgba(255, 255, 255, 0.08) 30%, rgba(255, 255, 255, 0.03) 70%, transparent 90%);
-  }
-
-  .glass-card::after {
-    content: '';
-    position: absolute;
-    top: 0; left: 10%; right: 10%;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--accent), transparent);
-    opacity: 0;
-    transition: opacity 0.5s var(--ease);
-  }
-
   .glass-card:hover {
     border-color: var(--border-hover);
     background: rgba(255, 255, 255, 0.035);
-    box-shadow: 0 8px 40px rgba(224, 90, 138, 0.06), 0 0 0 1px rgba(224, 90, 138, 0.08);
+    box-shadow: 0 8px 40px rgba(230, 83, 138, 0.07), 0 0 0 1px rgba(230, 83, 138, 0.08);
   }
 
-  .glass-card:hover::after {
-    opacity: 0.6;
+  /* Warm purple → maroon panel (app description cards, still-mind panel) */
+  .warm-panel {
+    background: linear-gradient(160deg, var(--panel-warm-a) 0%, var(--panel-warm-b) 130%);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 16px;
   }
 
-  /* ── Gradient text ── */
+  /* ── Gradient text variants ── */
   .gradient-text {
-    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 50%, var(--accent) 100%);
+    background: linear-gradient(135deg, var(--pink) 0%, var(--pink-light) 50%, var(--pink) 100%);
     background-size: 200% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    animation: shimmer 5s ease-in-out infinite;
+    animation: shimmer 6s ease-in-out infinite;
   }
 
-  /* ── Label (mono caps) ── */
+  .pink-text {
+    background: linear-gradient(120deg, var(--pink-light), var(--pink) 60%, var(--pink-deep));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gold-text {
+    background: linear-gradient(120deg, var(--gold-light), var(--gold) 55%, var(--gold-deep));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* ── Buttons ── */
+  .btn-gold {
+    background: linear-gradient(135deg, var(--gold-light), var(--gold) 55%, var(--gold-deep));
+    color: #241a12;
+    font-weight: 600;
+    box-shadow: 0 8px 30px rgba(203, 168, 118, 0.18);
+    transition: filter 0.4s var(--ease), box-shadow 0.4s var(--ease), transform 0.2s var(--ease);
+  }
+  .btn-gold:hover { filter: brightness(1.06); box-shadow: 0 10px 44px rgba(203, 168, 118, 0.32); }
+  .btn-gold:active { transform: scale(0.975); }
+
+  .btn-pink {
+    background: linear-gradient(135deg, var(--pink) 0%, var(--pink-deep) 100%);
+    color: #fff;
+    transition: filter 0.4s var(--ease), box-shadow 0.4s var(--ease), transform 0.2s var(--ease);
+  }
+  .btn-pink:hover { filter: brightness(1.08); box-shadow: 0 0 44px var(--pink-glow); }
+  .btn-pink:active { transform: scale(0.975); }
+
+  /* Overline label */
   .label {
-    font-family: var(--font-dm-mono), monospace;
-    font-size: 10px;
-    letter-spacing: 0.18em;
+    font-size: 11px;
+    letter-spacing: 0.32em;
     text-transform: uppercase;
     color: var(--text-secondary);
+    font-weight: 500;
   }
 
   /* ── Grain overlay ── */
@@ -136,7 +186,7 @@
     inset: 0;
     z-index: 9999;
     pointer-events: none;
-    opacity: 0.025;
+    opacity: 0.03;
     mix-blend-mode: overlay;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
     background-repeat: repeat;
@@ -153,67 +203,57 @@
 
   .atmo-1 {
     width: 800px; height: 800px;
-    background: radial-gradient(circle, rgba(224, 90, 138, 0.12), transparent 70%);
-    top: -300px; right: -200px;
+    background: radial-gradient(circle, rgba(240, 145, 63, 0.10), transparent 70%);
+    top: -320px; right: -180px;
     filter: blur(120px);
-    animation: drift1 20s ease-in-out infinite alternate;
+    animation: drift1 22s ease-in-out infinite alternate;
   }
 
   .atmo-2 {
-    width: 600px; height: 600px;
-    background: radial-gradient(circle, rgba(180, 160, 200, 0.06), transparent 70%);
-    bottom: -200px; left: -200px;
+    width: 640px; height: 640px;
+    background: radial-gradient(circle, rgba(150, 110, 190, 0.07), transparent 70%);
+    bottom: -220px; left: -200px;
     filter: blur(140px);
-    animation: drift2 25s ease-in-out infinite alternate;
+    animation: drift2 26s ease-in-out infinite alternate;
   }
 
   .atmo-3 {
-    width: 500px; height: 500px;
-    background: radial-gradient(circle, rgba(224, 90, 138, 0.06), transparent 70%);
-    top: 40%; left: 50%;
+    width: 520px; height: 520px;
+    background: radial-gradient(circle, rgba(230, 83, 138, 0.06), transparent 70%);
+    top: 45%; left: 55%;
     filter: blur(130px);
-    animation: drift3 22s ease-in-out infinite alternate;
+    animation: drift3 24s ease-in-out infinite alternate;
   }
 
-  /* ── Typing indicator ── */
-  .typing-dot {
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: var(--text-muted);
-    animation: typingPulse 1.4s ease-in-out infinite;
-  }
-  .typing-dot:nth-child(2) { animation-delay: 0.2s; }
-  .typing-dot:nth-child(3) { animation-delay: 0.4s; }
-
-  /* ── Button shine ── */
-  .btn-shine {
-    position: relative;
-    overflow: hidden;
-  }
+  /* Button shine sweep */
+  .btn-shine { position: relative; overflow: hidden; contain: paint; }
   .btn-shine::after {
     content: '';
     position: absolute;
     top: 0; left: -100%; width: 100%; height: 100%;
-    background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.15) 50%, transparent 70%);
-    transition: left 0.7s var(--ease);
+    background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.22) 50%, transparent 70%);
+    opacity: 0; /* invisible at rest — never leaks outside the button */
+    transition: left 0.7s var(--ease), opacity 0.2s ease;
   }
-  .btn-shine:hover::after {
-    left: 100%;
-  }
+  .btn-shine:hover::after { left: 100%; opacity: 1; }
 
-  /* ── Cursor glow ── */
+  /* Cursor glow */
   .cursor-glow {
     position: fixed;
-    width: 400px;
-    height: 400px;
+    width: 420px;
+    height: 420px;
     border-radius: 50%;
     pointer-events: none;
     z-index: 1;
-    background: radial-gradient(circle, rgba(224, 90, 138, 0.04), transparent 70%);
+    background: radial-gradient(circle, rgba(240, 145, 63, 0.045), transparent 70%);
     filter: blur(60px);
     transform: translate(-50%, -50%);
     transition: opacity 0.3s ease;
   }
+
+  /* Thin hairline scrollbar hidden for carousels */
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 }
 
 /* ── Keyframes ── */
@@ -221,80 +261,97 @@
   0%, 100% { background-position: 0% center; }
   50% { background-position: 200% center; }
 }
-
 @keyframes drift1 {
   0% { transform: translate(0, 0) scale(1) rotate(0deg); }
-  33% { transform: translate(-40px, 50px) scale(1.1) rotate(2deg); }
-  66% { transform: translate(-80px, 20px) scale(1.05) rotate(-1deg); }
-  100% { transform: translate(-60px, 60px) scale(1.15) rotate(1deg); }
+  50% { transform: translate(-60px, 40px) scale(1.1) rotate(2deg); }
+  100% { transform: translate(-40px, 60px) scale(1.14) rotate(-1deg); }
 }
-
 @keyframes drift2 {
   0% { transform: translate(0, 0) scale(1) rotate(0deg); }
-  33% { transform: translate(50px, -20px) scale(1.08) rotate(-2deg); }
-  66% { transform: translate(30px, -50px) scale(1.12) rotate(1deg); }
-  100% { transform: translate(60px, -40px) scale(1.06) rotate(-1deg); }
+  50% { transform: translate(40px, -30px) scale(1.1) rotate(-2deg); }
+  100% { transform: translate(60px, -40px) scale(1.06) rotate(1deg); }
 }
-
 @keyframes drift3 {
   0% { transform: translate(0, 0) scale(1); }
-  33% { transform: translate(-40px, -30px) scale(1.08); }
-  66% { transform: translate(20px, -50px) scale(1.04); }
-  100% { transform: translate(-20px, -40px) scale(1.1); }
+  50% { transform: translate(-30px, -40px) scale(1.08); }
+  100% { transform: translate(-20px, -30px) scale(1.1); }
 }
-
 @keyframes float {
   0%, 100% { transform: translate3d(0, 0, 0); }
   50% { transform: translate3d(0, -12px, 0); }
 }
-
+@keyframes breathe {
+  0%, 100% { opacity: 0.10; transform: scale(1); }
+  50% { opacity: 0.24; transform: scale(1.06); }
+}
+@keyframes breathe-slow {
+  0%, 100% { transform: scale(1); opacity: 0.85; }
+  50% { transform: scale(1.05); opacity: 1; }
+}
 @keyframes pulseRing {
-  0% { transform: scale(1); opacity: 0.4; }
-  100% { transform: scale(2); opacity: 0; }
+  0% { transform: scale(0.9); opacity: 0.5; }
+  100% { transform: scale(1.8); opacity: 0; }
 }
-
-@keyframes typingPulse {
-  0%, 60%, 100% { opacity: 0.3; transform: scale(1); }
-  30% { opacity: 1; transform: scale(1.2); }
-}
-
-@keyframes spin-slow {
-  to { transform: rotate(360deg); }
-}
-
+@keyframes spin-slow { to { transform: rotate(360deg); } }
 @keyframes waveform {
   0%, 100% { transform: scaleY(0.3); }
   50% { transform: scaleY(1); }
 }
-
-@keyframes breathe {
-  0%, 100% { opacity: 0.08; }
-  50% { opacity: 0.2; }
+@keyframes shimmer-beam {
+  0%, 100% { opacity: 0.4; transform: translateY(0) scaleX(1); }
+  50% { opacity: 0.8; transform: translateY(-6px) scaleX(1.05); }
+}
+@keyframes twinkle {
+  0%, 100% { opacity: 0.15; }
+  50% { opacity: 0.7; }
 }
 
-@keyframes gradient-shift {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
+/* Gentle horizontal cloud drift (staggered per instance) */
+@keyframes cloud-drift {
+  from { transform: translate3d(-7%, 0, 0); }
+  to   { transform: translate3d(7%, 0, 0); }
+}
+/* Soft fade-in of the cloud field on load */
+@keyframes cloud-fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 
-@keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 20px var(--accent-glow), 0 0 40px rgba(224, 90, 138, 0.05); }
-  50% { box-shadow: 0 0 30px var(--accent-glow), 0 0 60px rgba(224, 90, 138, 0.1); }
+/* ── Animated "video" scenes (MindStill cards) — transform/opacity only ── */
+/* Stillness: expanding ripple rings around a breathing orb */
+@keyframes scene-ripple {
+  0%   { transform: scale(0.32); opacity: 0.55; }
+  80%  { opacity: 0.12; }
+  100% { transform: scale(1.9); opacity: 0; }
 }
-
-@keyframes reveal-line {
-  from { transform: scaleX(0); }
-  to { transform: scaleX(1); }
+/* Stillness: slow-drifting dust motes */
+@keyframes scene-mote {
+  0%   { transform: translate3d(0, 0, 0); opacity: 0; }
+  15%  { opacity: 0.7; }
+  85%  { opacity: 0.4; }
+  100% { transform: translate3d(var(--mx, 8px), -46px, 0); opacity: 0; }
 }
-
-@keyframes count-up {
-  from { opacity: 0; transform: translateY(8px); }
-  to { opacity: 1; transform: translateY(0); }
+/* Possibility: embers rising from the base into the glow */
+@keyframes scene-rise {
+  0%   { transform: translate3d(0, 0, 0) scale(0.6); opacity: 0; }
+  12%  { opacity: 0.9; }
+  70%  { opacity: 0.7; }
+  100% { transform: translate3d(var(--mx, 0px), -240px, 0) scale(1.15); opacity: 0; }
 }
-
-@keyframes subtle-rotate {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+/* Possibility: the bloom pulsing wider as embers feed it */
+@keyframes scene-bloom {
+  0%, 100% { transform: scale(1); opacity: 0.75; }
+  50%      { transform: scale(1.18); opacity: 1; }
+}
+/* Awareness: orbit ring rotation (sparks ride the ring) */
+@keyframes scene-orbit {
+  to { transform: rotate(360deg); }
+}
+/* Awareness: soft aurora sweep passing through */
+@keyframes scene-aurora {
+  0%, 55%  { transform: translate3d(-70%, 0, 0) rotate(8deg); opacity: 0; }
+  70%      { opacity: 0.5; }
+  85%, 100%{ transform: translate3d(70%, 0, 0) rotate(8deg); opacity: 0; }
 }
 
 /* ── Reduced motion ── */
