@@ -18,12 +18,12 @@ const dmMono = DM_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Source — Deep Personality Cloning",
+  title: "Source : Inner Transformation",
   description:
     "Experience genuine, immersive conversations with AI avatars powered by deep personality cloning. Realistic voices, expressions, and presence.",
   metadataBase: new URL("https://source.ai"),
   openGraph: {
-    title: "Source — Deep Personality Cloning",
+    title: "Source : Inner Transformation",
     description:
       "Face-to-face conversations with AI avatars of extraordinary people. Their voice, their expressions, their presence.",
     type: "website",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Source — Deep Personality Cloning",
+    title: "Source : Inner Transformation",
     description:
       "Face-to-face conversations with AI avatars of extraordinary people.",
   },
