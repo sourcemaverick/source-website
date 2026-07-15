@@ -1,12 +1,12 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import HowItWorks from "@/components/HowItWorks";
-import TheApp from "@/components/ProductShowcase";
-import Demo from "@/components/AvatarSpotlight";
-import Waitlist from "@/components/Waitlist";
-import Partners from "@/components/Partners";
+import BelongToYou from "@/components/BelongToYou";
+import GreatestObstacle from "@/components/GreatestObstacle";
+import CloseTheGap from "@/components/CloseTheGap";
+import MindStill from "@/components/MindStill";
+import ConnectSource from "@/components/ConnectSource";
+import FinalCTA from "@/components/FinalCTA";
 import Footer from "@/components/Footer";
-import SectionDivider from "@/components/ui/SectionDivider";
 
 export default function Home() {
   return (
@@ -14,16 +14,12 @@ export default function Home() {
       <Navbar />
       <main className="relative z-10">
         <Hero />
-        <SectionDivider variant="gradient" />
-        <HowItWorks />
-        <SectionDivider variant="line" />
-        <TheApp />
-        <SectionDivider variant="dots" />
-        <Demo />
-        <SectionDivider variant="gradient" />
-        <Waitlist />
-        <SectionDivider variant="line" />
-        <Partners />
+        <BelongToYou />
+        <GreatestObstacle />
+        <CloseTheGap />
+        <MindStill />
+        <ConnectSource />
+        <FinalCTA />
       </main>
       <Footer />
     </>

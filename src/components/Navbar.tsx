@@ -17,7 +17,10 @@ export default function Navbar() {
 
   return (
     <>
-      <a href="#how-it-works" className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[60] focus:px-4 focus:py-2 focus:bg-[var(--accent)] focus:text-white focus:rounded-lg">
+      <a
+        href="#belong"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[60] focus:px-4 focus:py-2 focus:bg-[var(--pink)] focus:text-white focus:rounded-lg"
+      >
         Skip to content
       </a>
 
@@ -25,27 +28,30 @@ export default function Navbar() {
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${
-          scrolled
-            ? "bg-[rgba(10,10,10,0.7)] backdrop-blur-2xl border-b border-[rgba(255,255,255,0.06)] shadow-[0_1px_40px_rgba(0,0,0,0.3)]"
-            : "bg-transparent"
+        className={`fixed top-0 left-0 right-0 z-50 bg-[#08060b] border-b border-[rgba(255,255,255,0.08)] transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+          scrolled ? "shadow-[0_1px_40px_rgba(0,0,0,0.6)]" : ""
         }`}
       >
-        <div className={`max-w-7xl mx-auto flex items-center justify-between px-6 transition-all duration-700 ${scrolled ? "py-3.5" : "py-5"}`}>
-          {/* Logo — scales down on scroll */}
-          <a href="#" className="flex items-center gap-3 group relative">
+        <div
+          className={`max-w-7xl mx-auto flex items-center justify-between px-6 transition-all duration-700 ${
+            scrolled ? "py-3.5" : "py-5"
+          }`}
+        >
+          {/* Logo */}
+          <a href="#" className="flex items-center gap-2.5 group relative">
             <div className="relative">
               <Image
                 src="/source_logo.png"
                 alt="Source"
-                width={28}
-                height={28}
+                width={30}
+                height={30}
                 className="transition-all duration-500 group-hover:scale-110"
               />
-              {/* Subtle glow on hover */}
-              <div className="absolute inset-0 rounded-full bg-[var(--accent)] opacity-0 group-hover:opacity-20 blur-lg transition-opacity duration-500" />
+              <div className="absolute inset-0 rounded-full bg-[var(--pink)] opacity-0 group-hover:opacity-25 blur-lg transition-opacity duration-500" />
             </div>
-            <span className="text-[15px] font-light tracking-[-0.01em] text-[var(--text-primary)]">Source</span>
+            <span className="text-[19px] font-serif tracking-[0.01em] text-[var(--text-primary)]">
+              Source
+            </span>
           </a>
 
           {/* Desktop nav */}
@@ -54,17 +60,16 @@ export default function Navbar() {
               <a
                 key={link.href}
                 href={link.href}
-                className="relative text-[11px] font-mono uppercase tracking-[0.14em] text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors duration-400 px-4 py-2 rounded-full hover:bg-[rgba(255,255,255,0.04)]"
+                className="relative text-[12px] font-medium uppercase tracking-[0.16em] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors duration-300 px-4 py-2 rounded-full hover:bg-[rgba(255,255,255,0.04)]"
               >
                 {link.label}
               </a>
             ))}
-            <div className="w-px h-4 bg-[var(--border)] mx-3" />
             <a
               href="#waitlist"
-              className="relative text-[11px] font-medium px-6 py-2.5 rounded-full bg-white/[0.08] border border-white/[0.1] text-white transition-all duration-500 hover:bg-white/[0.14] hover:border-[var(--border-hover)] hover:shadow-[0_0_30px_var(--accent-glow)] active:scale-[0.97]"
+              className="btn-gold btn-shine ml-3 text-[12px] px-6 py-2.5 rounded-full"
             >
-              Join Waitlist
+              Join the Waitlist
             </a>
           </div>
 
@@ -94,7 +99,7 @@ export default function Navbar() {
         </div>
       </motion.nav>
 
-      {/* Mobile menu — full screen with staggered links */}
+      {/* Mobile menu */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
@@ -102,7 +107,7 @@ export default function Navbar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed inset-0 z-40 bg-[rgba(10,10,10,0.98)] backdrop-blur-3xl md:hidden flex flex-col items-center justify-center gap-2"
+            className="fixed inset-0 z-40 bg-[rgba(10,7,13,0.98)] backdrop-blur-3xl md:hidden flex flex-col items-center justify-center gap-2"
           >
             {navLinks.map((link, i) => (
               <motion.a
@@ -113,7 +118,7 @@ export default function Navbar() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 10 }}
                 transition={{ delay: 0.05 + i * 0.08, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                className="text-2xl font-extralight text-[var(--text-secondary)] hover:text-white transition-colors py-3 tracking-[-0.02em]"
+                className="text-3xl font-serif text-[var(--text-secondary)] hover:text-white transition-colors py-3"
               >
                 {link.label}
               </motion.a>
@@ -125,9 +130,9 @@ export default function Navbar() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 10 }}
               transition={{ delay: 0.35, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-              className="mt-6 text-sm font-medium px-10 py-4 rounded-full bg-gradient-to-r from-[var(--accent)] to-[var(--accent-deep)] text-white"
+              className="btn-gold mt-6 text-sm px-10 py-4 rounded-full"
             >
-              Join Waitlist
+              Join the Waitlist
             </motion.a>
           </motion.div>
         )}
