@@ -1,27 +1,31 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useImperativeHandle, forwardRef } from "react";
 
-export default function WaitlistCount() {
+const WaitlistCount = forwardRef((_, ref) => {
   const [count, setCount] = useState<number | null>(null);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const fetchCount = async () => {
-      try {
-        const response = await fetch("/api/waitlist/count");
-        const data = await response.json();
-        if (response.ok) {
-          setCount(data.count);
-        }
-      } catch (error) {
-        console.error("Failed to fetch waitlist count:", error);
-      } finally {
-        setLoading(false);
+  const fetchCount = async () => {
+    try {
+      const response = await fetch("/api/waitlist/count");
+      const data = await response.json();
+      if (response.ok) {
+        setCount(data.count);
       }
-    };
+    } catch (error) {
+      console.error("Failed to fetch waitlist count:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
+  useImperativeHandle(ref, () => ({
+    refetch: fetchCount,
+  }));
+
+  useEffect(() => {
     fetchCount();
     // Refresh count every 30 seconds
     const interval = setInterval(fetchCount, 30000);
@@ -59,4 +63,7 @@ export default function WaitlistCount() {
       </motion.div>
     </motion.div>
   );
-}
+});
+
+WaitlistCount.displayName = "WaitlistCount";
+export default WaitlistCount;

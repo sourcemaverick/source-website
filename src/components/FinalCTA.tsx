@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { viewportOnce } from "@/lib/animations";
 import WaitlistCount from "./WaitlistCount";
 
@@ -12,6 +12,7 @@ export default function FinalCTA() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const countRef = useRef<{ refetch: () => Promise<void> }>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -43,6 +44,8 @@ export default function FinalCTA() {
       setName("");
       setEmail("");
       setMessage("");
+      // Refetch the count immediately
+      countRef.current?.refetch();
     } catch (err) {
       setError(err instanceof Error ? err.message : "Something went wrong");
     } finally {
@@ -69,7 +72,7 @@ export default function FinalCTA() {
         className="relative mx-auto max-w-2xl text-center"
       >
         <div className="mb-12 sm:mb-16">
-          <WaitlistCount />
+          <WaitlistCount ref={countRef} />
         </div>
 
         <h2 className="font-serif font-semibold text-[clamp(2rem,4.5vw,3.2rem)] leading-[1.15] gold-text">
