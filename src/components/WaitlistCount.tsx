@@ -1,45 +1,21 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useEffect, useState, useImperativeHandle, forwardRef } from "react";
+import { useImperativeHandle, forwardRef } from "react";
+import { useWaitlistCount } from "@/lib/useWaitlistCount";
 
 const WaitlistCount = forwardRef((_, ref) => {
-  const [count, setCount] = useState<number | null>(null);
-  const [loading, setLoading] = useState(true);
-
-  const fetchCount = async () => {
-    try {
-      const response = await fetch("/api/waitlist/count");
-      const data = await response.json();
-      if (response.ok) {
-        setCount(data.count);
-      }
-    } catch (error) {
-      console.error("Failed to fetch waitlist count:", error);
-    } finally {
-      setLoading(false);
-    }
-  };
+  const { count, refetch, increment } = useWaitlistCount();
 
   useImperativeHandle(ref, () => ({
-    refetch: fetchCount,
+    refetch,
+    increment,
   }));
 
-  useEffect(() => {
-    fetchCount();
-    // Refresh count every 30 seconds
-    const interval = setInterval(fetchCount, 30000);
-    return () => clearInterval(interval);
-  }, []);
-
-  if (loading) {
+  if (count === null) {
     return (
       <div className="h-16 animate-pulse rounded-xl bg-[rgba(255,255,255,0.05)]" />
     );
-  }
-
-  if (count === null) {
-    return null;
   }
 
   return (

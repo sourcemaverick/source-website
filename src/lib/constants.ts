@@ -1,3 +1,7 @@
+/* Displayed waitlist count = real Airtable signups + this baseline.
+   Used by the count API (server) and as the client-side fallback. */
+export const WAITLIST_BASELINE = 1121;
+
 export const navLinks = [
   { label: "The Path", href: "#belong" },
   { label: "The App", href: "#connect" },

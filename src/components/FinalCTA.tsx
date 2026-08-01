@@ -12,7 +12,10 @@ export default function FinalCTA() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const countRef = useRef<{ refetch: () => Promise<void> }>(null);
+  const countRef = useRef<{
+    refetch: () => Promise<void>;
+    increment: () => void;
+  }>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -44,8 +47,8 @@ export default function FinalCTA() {
       setName("");
       setEmail("");
       setMessage("");
-      // Refetch the count immediately
-      countRef.current?.refetch();
+      // Bump the count immediately (the API caches for 60s)
+      countRef.current?.increment();
     } catch (err) {
       setError(err instanceof Error ? err.message : "Something went wrong");
     } finally {
