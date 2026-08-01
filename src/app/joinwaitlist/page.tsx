@@ -17,7 +17,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Source — Unpattern your mind",
+  title: "Source - Join the Launch",
   description:
     "You cannot be your thoughts, emotions or body. What can you be? Unpattern your mind to unlock the power of superconsciousness.",
 };
