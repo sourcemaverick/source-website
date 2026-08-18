@@ -41,13 +41,13 @@ export const Hero = () => (
           text="Find Yourself"
           delay={1.3}
           stagger={0.07}
-          className="block text-7xl sm:text-8xl md:text-9xl lg:text-[10rem]"
+          className="block text-6xl sm:text-7xl md:text-8xl lg:text-9xl"
         />
         <BlurTextReveal
           text="The Source"
           delay={2.2}
           stagger={0.05}
-          className="mt-3 block font-mystic italic text-2xl text-white/90 sm:text-3xl md:mt-5 md:text-4xl"
+          className="mt-3 block font-mystic italic text-3xl text-white/90 sm:text-4xl md:mt-5 md:text-5xl"
         />
       </h1>
 
