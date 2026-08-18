@@ -1,0 +1,91 @@
+{
+  "theme": "dark",
+  "typography": {
+    "headings": {
+      "family": "Cormorant Garamond, serif",
+      "weights": ["300", "400", "500", "600"],
+      "description": "Elegant, mystic, and transformative. Ideal for a high-end psychology vibe."
+    },
+    "body": {
+      "family": "Montserrat, sans-serif",
+      "weights": ["300", "400"],
+      "description": "Clean, modern, and readable. Wide tracking for small labels to enhance the cinematic feel."
+    },
+    "sizing": {
+      "h1": "text-5xl md:text-7xl lg:text-8xl tracking-tight leading-none",
+      "h2": "text-3xl md:text-4xl",
+      "body": "text-base text-white/70",
+      "labels": "text-xs uppercase tracking-[0.2em]"
+    }
+  },
+  "colors": {
+    "background": "#050505",
+    "glass": {
+      "background": "rgba(255, 255, 255, 0.03)",
+      "border": "rgba(255, 255, 255, 0.1)",
+      "blur": "backdrop-blur-2xl backdrop-saturate-150"
+    },
+    "text": {
+      "primary": "#FFFFFF",
+      "secondary": "rgba(255, 255, 255, 0.7)",
+      "tertiary": "rgba(255, 255, 255, 0.4)"
+    }
+  },
+  "visual_enhancers": {
+    "glassmorphism": "Used selectively on the header, a central quote/CTA card, and bottom utilities. Do not cover the main video entirely.",
+    "overlay": "A very subtle radial gradient overlay (black/70 at edges to black/20 in center) on top of the video to ensure text readability while letting the center shine.",
+    "borders": "1px solid rgba(255, 255, 255, 0.1) on all glass elements to define edges against the dark background."
+  },
+  "component_paths": {
+    "header": "/app/frontend/src/components/Header.jsx",
+    "hero": "/app/frontend/src/components/Hero.jsx",
+    "blur_text": "/app/frontend/src/components/BlurTextReveal.jsx"
+  },
+  "grids": {
+    "general": "Single screen layout (h-screen). Absolute positioning for background media, flexbox for centering content.",
+    "header": "flex justify-between items-center w-full max-w-7xl mx-auto"
+  },
+  "layouts": {
+    "structure": "Single striking hero screen. No scrolling required. Content should be vertically and horizontally centered with space around.",
+    "spacing": "p-6 md:p-12 for outer bounds. Generous internal padding (p-8 to p-12) for glass cards."
+  },
+  "motion": {
+    "kinetic_typography": "Implement a Blur-to-Sharp stagger reveal for the main heading ('The Source: Find Yourself'). Characters/words start with opacity 0, filter: blur(12px), y: 20 and animate to opacity 1, blur(0px), y: 0 with a slight stagger delay (0.05s).",
+    "page_load": "Start with a black screen that fades out to reveal the video and UI components over 1.5 seconds.",
+    "hover_states": "Links and buttons should have subtle opacity shifts (white/70 to white) and a slow transform transition (duration-300)."
+  },
+  "accessibility": {
+    "contrast": "Ensure the gradient overlay is dark enough behind the main text. Use text-shadow if necessary for the ultra-thin serif fonts.",
+    "reduced_motion": "Respect prefers-reduced-motion for the kinetic typography by falling back to a simple opacity fade.",
+    "testing": "All interactive elements (buttons, links) MUST include a 'data-testid' attribute (e.g., 'data-testid=\"nav-home-link\"')."
+  },
+  "media": {
+    "video_background": {
+      "url": "https://customer-assets-lqy194kg.emergentagent.net/job_b61dfa61-3f1e-49b3-a61d-99d4fc158341/artifacts/mbnrilf5_website_landing_4k_ai_clean.mp4",
+      "usage": "Fullscreen, object-cover, fixed background behind all UI. Muted, looping, playsinline.",
+      "fallback_color": "#050505"
+    }
+  },
+  "image_urls": {},
+  "3d_libraries_and_steps": {
+    "framer_motion": "Use for the kinetic typography reveal and layout transitions."
+  },
+  "instructions_to_main_agent": [
+    "Create a single-page, full-height (100vh) landing page with no scrolling.",
+    "Place the provided 4K video as an absolute/fixed background, covering the entire viewport.",
+    "Apply a subtle vignette/radial dark overlay over the video so the center is mostly clear but edges are dark, keeping text readable.",
+    "Build a floating, glassmorphic header at the top. Use 'bg-white/5 backdrop-blur-2xl border border-white/10' for the glass effect.",
+    "In the center, implement kinetic typography using Framer Motion. The text 'The Source : Find Yourself' should reveal word-by-word or char-by-char, transitioning from blurred to sharp.",
+    "Use 'Cormorant Garamond' for the large, mystic headings, and 'Montserrat' for tiny, wide-tracked navigational elements.",
+    "Do NOT clutter the screen. Minimal content. Add just a few placeholder navigation links and maybe a 'Begin Journey' button.",
+    "Ensure the glassmorphism does NOT use a fully transparent background; it must have a slight tint and border to look like physical glass."
+  ],
+  "universal_guidelines_for_main_agent": [
+    "You MUST NOT apply universal transition. Eg: transition: all. Always add transitions for specific interactive elements.",
+    "You MUST NOT center align the app container using .App { text-align: center; }.",
+    "Use 2-3x more spacing than feels comfortable.",
+    "Every interaction needs micro-animations - hover states, transitions, etc.",
+    "Never use generic AI emojis.",
+    "All interactive elements must include data-testid attribute for testing."
+  ]
+}
