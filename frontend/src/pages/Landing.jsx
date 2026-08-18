@@ -1,6 +1,7 @@
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { FooterStrip } from "@/components/FooterStrip";
+import { MysticCursor } from "@/components/MysticCursor";
 
 export default function Landing() {
   return (
@@ -8,6 +9,7 @@ export default function Landing() {
       <Hero />
       <Header />
       <FooterStrip />
+      <MysticCursor />
     </main>
   );
 }

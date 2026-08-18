@@ -161,3 +161,51 @@ body {
     animation: none;
   }
 }
+
+@media (pointer: fine) {
+  .mystic-cursor-active,
+  .mystic-cursor-active a,
+  .mystic-cursor-active button {
+    cursor: none;
+  }
+}
+
+.cursor-dot,
+.cursor-glow,
+.cursor-trail {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 9999px;
+  will-change: transform;
+}
+
+.cursor-dot {
+  width: 6px;
+  height: 6px;
+  margin: -3px 0 0 -3px;
+  background: #fff;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.9), 0 0 20px rgba(255, 220, 160, 0.5);
+}
+
+.cursor-glow {
+  width: 44px;
+  height: 44px;
+  margin: -22px 0 0 -22px;
+  background: radial-gradient(circle, rgba(255, 226, 178, 0.22) 0%, rgba(140, 170, 255, 0.1) 45%, transparent 70%);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1), height 0.4s cubic-bezier(0.22, 1, 0.36, 1), margin 0.4s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.4s ease;
+}
+
+.cursor-glow-hover {
+  width: 72px;
+  height: 72px;
+  margin: -36px 0 0 -36px;
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.cursor-trail {
+  margin: -3px 0 0 -3px;
+  background: radial-gradient(circle, rgba(255, 232, 190, 0.9) 0%, rgba(255, 210, 150, 0.3) 70%);
+  filter: blur(0.5px);
+}

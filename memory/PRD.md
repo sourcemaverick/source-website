@@ -23,6 +23,7 @@ Use the provided 4K video animation to create a website's landing page. Glass ef
 - `Header.jsx`: floating glass pill nav (Method / Sessions / Contact placeholders, pulse "Now Open" dot)
 - `FooterStrip.jsx`: slow editorial marquee (Perception · Stillness · Transformation…) in glass pill, "01 / Prologue" + "MMXXVI" flanks
 - Film grain overlay, custom selection color, reduced-motion fallbacks, data-testids everywhere
+- `MysticCursor.jsx`: custom glowing cursor (white dot + warm glow ring + 6-dot soft trail, ring expands on interactive hover; desktop/fine-pointer only, native cursor hidden)
 
 ## Backlog / Next
 - P0: Real content from user (copy for sections) — user said "I will tell you the content later"
