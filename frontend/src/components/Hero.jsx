@@ -41,7 +41,7 @@ export const Hero = () => (
           text="Find Yourself"
           delay={1.3}
           stagger={0.07}
-          className="block text-6xl sm:text-7xl md:text-8xl lg:text-9xl"
+          className="block text-7xl sm:text-8xl md:text-9xl lg:text-[10rem]"
         />
         <BlurTextReveal
           text="The Source"
