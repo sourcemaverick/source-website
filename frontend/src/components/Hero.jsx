@@ -27,27 +27,18 @@ export const Hero = () => (
     />
 
     <div className="relative z-20 flex h-full flex-col items-center justify-center px-6 text-center">
-      <motion.p
-        initial={{ opacity: 0, letterSpacing: "0.2em" }}
-        animate={{ opacity: 1, letterSpacing: "0.5em" }}
-        transition={{ delay: 0.9, duration: 1.6, ease }}
-        className="font-ui text-[10px] uppercase text-white/50 md:text-xs"
-      >
-        A Study of the Inner Mind
-      </motion.p>
-
       <h1 className="hero-shadow mt-8 font-mystic font-medium leading-none text-white">
         <BlurTextReveal
-          text="Find Yourself"
+          text="The Source"
           delay={1.3}
           stagger={0.07}
           className="block text-6xl sm:text-7xl md:text-8xl lg:text-9xl"
         />
         <BlurTextReveal
-          text="The Source"
+          text="Find Yourself"
           delay={2.2}
           stagger={0.05}
-          className="mt-3 block font-mystic italic text-3xl text-white/90 sm:text-4xl md:mt-5 md:text-5xl"
+          className="mt-3 block font-mystic italic text-2xl text-white/90 sm:text-3xl md:mt-5 md:text-4xl"
         />
       </h1>
 
