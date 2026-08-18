@@ -42,11 +42,21 @@ export const Hero = () => (
         />
       </h1>
 
+      <motion.p
+        data-testid="hero-hookline"
+        initial={{ opacity: 0, y: 16, filter: "blur(10px)" }}
+        animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+        transition={{ delay: 2.9, duration: 1.3, ease }}
+        className="mt-10 max-w-xl font-ui text-sm leading-relaxed text-white/75 sm:text-base md:mt-12 md:max-w-2xl md:text-lg"
+      >
+        Unravel the power of Superconsciousness through spiritual unfoldment.
+      </motion.p>
+
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 3, duration: 1.2, ease }}
-        className="mt-14"
+        transition={{ delay: 3.4, duration: 1.2, ease }}
+        className="mt-8 md:mt-10"
       >
         <button
           data-testid="begin-journey-btn"
