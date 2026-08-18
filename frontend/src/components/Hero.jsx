@@ -36,18 +36,18 @@ export const Hero = () => (
         A Study of the Inner Mind
       </motion.p>
 
-      <h1 className="hero-shadow mt-8 font-mystic font-light leading-none text-white">
+      <h1 className="hero-shadow mt-8 font-mystic font-medium leading-none text-white">
         <BlurTextReveal
-          text="The Source"
+          text="Find Yourself"
           delay={1.3}
           stagger={0.07}
           className="block text-6xl sm:text-7xl md:text-8xl lg:text-9xl"
         />
         <BlurTextReveal
-          text="Find Yourself"
+          text="The Source"
           delay={2.2}
           stagger={0.05}
-          className="mt-3 block font-mystic italic text-2xl text-white/70 sm:text-3xl md:mt-5 md:text-4xl"
+          className="mt-3 block font-mystic italic text-2xl text-white/90 sm:text-3xl md:mt-5 md:text-4xl"
         />
       </h1>
 
