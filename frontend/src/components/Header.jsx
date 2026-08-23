@@ -57,9 +57,6 @@ export const Header = () => {
             <span className="font-mystic text-lg font-medium tracking-wide text-white md:text-2xl">
               The Source
             </span>
-            <span className="hidden font-ui text-[9px] uppercase tracking-[0.35em] text-white/40 sm:inline">
-              Find Yourself
-            </span>
           </a>
 
           {/* Desktop nav */}

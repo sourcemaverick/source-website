@@ -62,7 +62,7 @@ export const Hero = () => (
         transition={{ delay: 2.6, duration: 1.3, ease }}
         className="mt-10 max-w-[46ch] font-ui text-sm font-light leading-relaxed text-white/75 sm:text-base md:mt-12 md:text-lg"
       >
-        We help you discover who you are beneath the roles and noise of society. We help you connect with your authentic self and inner drive.
+        Discover who you are beneath the noise of society. Connect with your authentic self. Get back your inner drive.
       </motion.p>
 
       <motion.div
