@@ -8,7 +8,7 @@ export const FooterStrip = () => (
     initial={{ opacity: 0, y: 18 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ delay: 2.6, duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-    className="absolute bottom-0 left-0 right-0 z-30 px-6 pb-6 md:px-12 md:pb-8"
+    className="absolute bottom-0 left-0 right-0 z-30 px-6 pb-6 md:px-12 md:pb-6"
   >
     <div className="mx-auto flex max-w-6xl items-center justify-between gap-6">
       <span className="hidden shrink-0 font-ui text-[9px] uppercase tracking-[0.3em] text-white/35 md:block">

@@ -4,12 +4,36 @@
   --ink: #050505;
   --glass-bg: rgba(255, 255, 255, 0.04);
   --glass-border: rgba(255, 255, 255, 0.12);
+  --gold: #d4b26c;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 html,
 body {
   background: var(--ink);
-  overflow: hidden;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: clip;
+}
+
+/* Master figure halo */
+.master-halo {
+  background:
+    radial-gradient(circle at 50% 42%, rgba(220, 176, 108, 0.4) 0%, rgba(220, 176, 108, 0.08) 35%, transparent 65%);
+  filter: blur(20px);
+}
+
+/* Partner logo hover brighten */
+.partner-logo {
+  transition: color 0.5s ease, opacity 0.5s ease;
+}
+.partner-logo:hover {
+  color: rgba(255, 255, 255, 0.85);
 }
 
 .font-mystic {

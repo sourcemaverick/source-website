@@ -1,10 +1,19 @@
 import { motion } from "framer-motion";
 import { BlurTextReveal } from "@/components/BlurTextReveal";
+import { FooterStrip } from "@/components/FooterStrip";
 
 const ease = [0.22, 1, 0.36, 1];
 
+const scrollDown = () => {
+  const el = document.querySelector('[data-testid="problem-section"]');
+  if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+};
+
 export const Hero = () => (
-  <section data-testid="hero-section" className="relative h-screen w-full overflow-hidden bg-[#050505]">
+  <section
+    data-testid="hero-section"
+    className="relative h-screen w-full overflow-hidden bg-[#050505]"
+  >
     <video
       data-testid="hero-video"
       className="absolute inset-0 h-full w-full object-cover"
@@ -27,44 +36,51 @@ export const Hero = () => (
     />
 
     <div className="relative z-20 flex h-full flex-col items-center justify-center px-6 text-center">
-      <h1 className="hero-shadow mt-8 font-mystic font-medium leading-none text-white">
+      <motion.span
+        data-testid="hero-eyebrow"
+        initial={{ opacity: 0, y: 12 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1.05, duration: 1.1, ease }}
+        className="mb-8 font-ui text-[10px] uppercase tracking-[0.5em] text-[color:var(--gold)] md:text-xs"
+      >
+        The Source
+      </motion.span>
+
+      <h1 className="hero-shadow font-mystic font-light leading-[1] text-white">
         <BlurTextReveal
-          text="The Source"
+          text="Know Your Truth"
           delay={1.3}
-          stagger={0.07}
-          className="block text-6xl sm:text-7xl md:text-8xl lg:text-9xl"
-        />
-        <BlurTextReveal
-          text="Find Yourself"
-          delay={2.2}
-          stagger={0.05}
-          className="mt-3 block font-mystic italic text-2xl text-white/90 sm:text-3xl md:mt-5 md:text-4xl"
+          stagger={0.06}
+          className="block text-5xl tracking-tight sm:text-6xl md:text-7xl lg:text-8xl"
         />
       </h1>
 
       <motion.p
-        data-testid="hero-hookline"
-        initial={{ opacity: 0, y: 16, filter: "blur(10px)" }}
+        data-testid="hero-sub"
+        initial={{ opacity: 0, y: 14, filter: "blur(10px)" }}
         animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-        transition={{ delay: 2.9, duration: 1.3, ease }}
-        className="mt-10 max-w-xl font-ui text-sm leading-relaxed text-white/75 sm:text-base md:mt-12 md:max-w-2xl md:text-lg"
+        transition={{ delay: 2.6, duration: 1.3, ease }}
+        className="mt-10 max-w-[46ch] font-ui text-sm font-light leading-relaxed text-white/75 sm:text-base md:mt-12 md:text-lg"
       >
-        Unravel the power of Superconsciousness through spiritual unfoldment.
+        We help you discover who you are beneath the roles and noise of society. We help you connect with your authentic self and inner drive.
       </motion.p>
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 3.4, duration: 1.2, ease }}
-        className="mt-8 md:mt-10"
+        transition={{ delay: 3.2, duration: 1.2, ease }}
+        className="mt-12 md:mt-14"
       >
         <button
-          data-testid="begin-journey-btn"
+          data-testid="hero-cta"
+          onClick={scrollDown}
           className="cta-glass glass rounded-full px-10 py-4 font-ui text-[10px] uppercase tracking-[0.35em] text-white/90 md:text-xs"
         >
-          Begin the Journey
+          Tell me more
         </button>
       </motion.div>
     </div>
+
+    <FooterStrip />
   </section>
 );
