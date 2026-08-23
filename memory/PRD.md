@@ -1,64 +1,65 @@
 # PRD — The Source : Find Yourself
 
 ## Original Problem Statement
-Use the provided 4K video animation to create a website's landing page. Glass effect on a blackish tone, very professional, high-tech psychology feel. Awwwards Site-of-the-Day quality — large kinetic hero, on-load moment, smooth scrolling, premium motion. Brand: "The Source : Find Yourself".
+Awwwards-quality landing page for "The Source : Find Yourself" — a dark, minimalist psychology / spiritual brand using the user's provided kinetic video background, glassmorphism, warm-gold accent, and premium motion.
 
 ## User Choices
-- Video: fullscreen background in hero (kept even alongside later sections — user reaffirmed on Jul 2026)
-- Full 9-section content brief provided (see below)
-- App store links: placeholder `#` — user will paste real URLs later
-- Partner logo assets: text wordmarks styled minimally — user will upload official logos later
+- Hero background: kept the provided 4K video (transcoded to 1080p mp4 + VP9 webm + poster jpg)
+- Full 9-section content brief authored by user
+- App Store live URL: `apps.apple.com/in/app/source-inner-transformation/id6761737790`
+- Google Play live URL: `play.google.com/apps/testing/com.superreal.source.android`
+- Partner logos supplied — Google (image asset) with "for Startups" text below; ElevenLabs Grants image from ElevenLabs CDN
 - Language: English
 - Brand: "The Source : Find Yourself"
 
 ## Architecture
-- React (CRA + craco), Tailwind, framer-motion. Backend untouched (template FastAPI + Mongo).
-- Video asset: 1080p H.264 mp4 + VP9 webm fallback + poster jpg in `/app/frontend/public/`
-- Fonts: Cormorant Garamond (serif display), Montserrat (UI labels)
-- Palette: near-black (#050505) + muted gold accent (#d4b26c via `--gold` CSS var)
+- React (CRA + craco), Tailwind, framer-motion, lucide-react. Backend: FastAPI + MongoDB (Motor async).
+- Fonts: Cormorant Garamond serif (display) + Montserrat sans (UI labels)
+- Palette: near-black `#050505` + muted gold `#d4b26c` (`--gold`)
 - Landing composes sections in `src/pages/Landing.jsx`
 
-## Implemented (Jul 2026)
+## Implemented
 
-### Hero (updated per new brief)
-- Eyebrow "The Source" (gold), headline "Know Your Truth", subheading (roles/noise copy), CTA "Tell me more" → scroll to Problem
-- Kept video bg + on-load black fade + kinetic BlurTextReveal + FooterStrip inside hero
+### Hero
+- Eyebrow "The Source", headline "Know Your Truth", subheading, CTA "Tell me more" → smooth-scrolls to Problem
+- On-load black fade, kinetic BlurTextReveal, video bg + vignette + film grain
+- FooterStrip (glass marquee) contained inside Hero
 
-### Section 2 — Problem
-- `ProblemSection.jsx`: 4-block scroll-driven vertical cross-fade using `useScroll`/`useTransform` inside a `sticky top-0 h-screen` viewport within a 400vh container. Progress underline advances as user scrolls; scroll-reverse works.
-
-### Section 3 — Product (3 beats)
-- Beat 1 — Master: `MasterFigure.jsx` SVG silhouette with warm halo/rim-light (dark presence, not photograph)
-- Beat 2 — Three layers of mind: `MindLayers.jsx` animated concentric rings (Conscious/Subconscious/Superconscious) with glowing core and orbital shimmer
-- Beat 3 — The product: `ConnectionThread.jsx` two soft light points with pulsing warm thread
-
-### Section 4 — Benefits
-- `BenefitsSection.jsx`: 4 benefits (Know Who You Are, Live From Authenticity, Live in Harmony, Clarity and Commitment) with thin gold lucide-react line icons (Eye, Flame, Circle, Compass)
-
-### Section 5 — Why Source Is Different
-- `DifferenceSection.jsx`: manifesto intro + 4 contrast rows with thin vertical gold divider (Symptom vs Source, Session vs Relationship, Trained vs Realized, Managing vs Becoming)
-
-### Section 6 — Testimonials
-- `TestimonialsSection.jsx`: auto-rotating (6.5s) quote carousel, 4 quotes, abstract warm-glow avatar, tap-to-select underline dots
-
-### Section 7 — App Download
-- `AppDownloadSection.jsx`: Apple App Store + Google Play glass badges (hrefs = "#", "Coming Soon" label)
-
-### Section 8 — Cloud Partners
-- `PartnersSection.jsx`: "Backed by" label + Google for Startups & ElevenLabs Grants text wordmarks (muted gold hover)
-
-### Section 9 — Footer
-- `SiteFooter.jsx`: brand mark, Terms/Privacy links, Instagram/TikTok/YouTube/X icons (thin-line, gold hover), © 2026 line
+### Sections (top → bottom)
+1. **Hero** — Video + kinetic hero
+2. **Problem** — `sticky top-0 h-screen` inside a 400vh container; 4 poetic lines cross-fade using `useScroll`/`useTransform`, reverses on scroll-up. Progress underline in muted gold.
+3. **Product** — 3 beats:
+   - Master figure = real Unsplash spiritual portrait (`photo-1768895124631-213163435e30`) heavily treated with brightness/contrast, warm rim halo, central darkening, bottom fade-into-ink, edge vignette, and two drifting light particles
+   - Mind Layers = SVG concentric rings (Conscious/Subconscious/Superconscious) with glowing gold core and slow orbital shimmer
+   - Connection Thread = two pulsing light points connected by a warm gradient thread
+4. **Benefits** — 4 items (Eye/Flame/Circle/Compass thin gold lucide icons)
+5. **Difference** — Manifesto intro + 4 contrast rows with thin gold vertical divider
+6. **Testimonials** — Auto-rotating carousel (6.5s), abstract warm-glow avatar, underline dots
+7. **Contact** — Glass form (name / email / intention), noValidate, live to `POST /api/contact`, EmailStr backend validation, success state with "Received." message + "Write again" reset
+8. **Download** — Apple App Store + Google Play glass badges with the real store URLs; "Available now" label
+9. **Partners** — Real Google logo image + "for Startups" text + ElevenLabs Grants image (70% opacity, brighten on hover)
+10. **Footer** — Brand mark, Terms/Privacy, Instagram/TikTok/YouTube/X thin-line icons, © 2026 line
 
 ### Site-wide
-- `Header.jsx`: fixed glass nav, section-scroll buttons (Problem, The Product, Different, Download), pulse "Now Open" dot
-- Film grain, MysticCursor, native smooth-scroll, `overflow-x: clip` (preserves sticky positioning)
-- data-testid on every interactive/critical element
+- **Header**: fixed glass pill nav (desktop) + full-screen glass mobile overlay (`z-[35]`) with animated staggered links, numbered `01/02/…` gold eyebrows, `X` toggle, body scroll lock while open
+- Native smooth scroll, `overflow-x: clip` on body (preserves sticky positioning)
+- Film grain, MysticCursor, section jump navigation, data-testid on every interactive/critical element
+
+### Share Card / SEO
+- `/public/index.html`: title, description, `og:title/description/image/image:width/height/alt`, `twitter:card=summary_large_image`, apple-mobile-web-app tags, theme-color
+- OG image at `/public/og-image.jpg` (1200×630, extracted from hero video via ffmpeg)
+
+### Backend
+- `POST /api/contact` → validates via Pydantic (EmailStr + length), persists to Mongo `contact_submissions`, returns `{id, name, email, intention, created_at}`
+- Existing `/api/`, `/api/status` untouched
+
+## Verified (Jul 2026)
+- Backend: 7/7 pytest passing (via testing agent) — happy path, missing fields → 422, invalid email → 422, regression on / and /status
+- Frontend: all 10 sections render, desktop smooth-scroll nav, hero CTA, Problem sticky cross-fade at 12.5%/37.5%/62.5%/87.5%, testimonial auto-rotate + manual dot switching, contact happy path + invalid-email UX (custom error), download badges have real hrefs, partner logo images load 200, OG meta tags + og-image.jpg resolve 200, mobile menu (390×844) opens/closes, links scroll & close overlay, body scroll locked while open
 
 ## Backlog / Next
-- P0: User to provide real App Store + Google Play URLs, and official Google for Startups + ElevenLabs Grants logo assets
-- P1: Mobile hamburger menu (full-screen glass overlay) for header nav
-- P1: Contact section with minimal glass form (name/email/intention)
-- P2: Lenis / momentum smooth-scroll library for even silkier scroll
-- P2: Claude Sonnet AI guide integration (originally requested Message 51 — still on ice pending user product definition)
-- P2: SEO meta/OG tags, favicons
+- P2: Lenis / momentum smooth-scroll library for silkier feel across long page
+- P2: Claude Sonnet AI guide integration (originally requested — still awaiting product definition from user)
+- P2: Real portrait photograph swap when user provides their preferred image (current is a treated Unsplash statue)
+- P2: Add `/admin` dashboard or CSV export for `contact_submissions`
+- P2: Favicon + touch-icons and manifest updates

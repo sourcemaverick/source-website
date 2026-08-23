@@ -6,6 +6,7 @@ import { ProductSection } from "@/components/sections/ProductSection";
 import { BenefitsSection } from "@/components/sections/BenefitsSection";
 import { DifferenceSection } from "@/components/sections/DifferenceSection";
 import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
+import { ContactSection } from "@/components/sections/ContactSection";
 import { AppDownloadSection } from "@/components/sections/AppDownloadSection";
 import { PartnersSection } from "@/components/sections/PartnersSection";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -20,6 +21,7 @@ export default function Landing() {
       <BenefitsSection />
       <DifferenceSection />
       <TestimonialsSection />
+      <ContactSection />
       <AppDownloadSection />
       <PartnersSection />
       <SiteFooter />
