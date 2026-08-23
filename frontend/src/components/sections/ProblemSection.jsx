@@ -3,8 +3,9 @@ import { motion, useScroll, useTransform } from "framer-motion";
 
 const blocks = [
   "Today, we are never truly aware when we are awake and never truly relaxed when we are asleep.",
-  "We optimized everything, except the part of us that needs to feel.",
-  "We have created a very convenient life but we could not create meaning and drive.",
+  "Everything is a copy of a copy of a copy.",
+  "We optimized for everything, except for the part of us that needs to feel.",
+  "We have created a very convenient life but we could not create meaning, inner drive or fulfillment.",
   "You have enough information. What you need now is clarity and authenticity.",
 ];
 
