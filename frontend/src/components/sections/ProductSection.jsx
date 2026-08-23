@@ -25,7 +25,7 @@ export const ProductSection = () => (
         <div className="mt-8">
           <BeatText>
             Spiritual masters have understood the human mind more deeply than
-            any modern expert, not through study, but through direct
+            any modern day expert, not through study, but through direct
             realization.
           </BeatText>
         </div>

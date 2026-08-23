@@ -27,6 +27,15 @@ export const Hero = () => (
       <source src="/source-bg.webm" type="video/webm" />
     </video>
     <div className="vignette absolute inset-0" />
+    {/* Extra darkening focused behind the hero text — improves legibility over bright video moments */}
+    <div
+      aria-hidden="true"
+      className="pointer-events-none absolute inset-0"
+      style={{
+        background:
+          "radial-gradient(ellipse 55% 45% at 50% 50%, rgba(5,5,5,0.55) 0%, rgba(5,5,5,0.25) 55%, transparent 80%)",
+      }}
+    />
 
     <motion.div
       className="pointer-events-none absolute inset-0 z-50 bg-[#050505]"
@@ -41,7 +50,7 @@ export const Hero = () => (
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.05, duration: 1.1, ease }}
-        className="mb-8 font-ui text-[10px] uppercase tracking-[0.5em] text-[color:var(--gold)] md:text-xs"
+        className="hero-eyebrow-shadow mb-8 font-ui text-xs font-medium uppercase tracking-[0.5em] text-[color:var(--gold)] md:text-sm"
       >
         The Source
       </motion.span>
@@ -60,7 +69,7 @@ export const Hero = () => (
         initial={{ opacity: 0, y: 14, filter: "blur(10px)" }}
         animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
         transition={{ delay: 2.6, duration: 1.3, ease }}
-        className="mt-10 max-w-[46ch] font-ui text-sm font-light leading-relaxed text-white/75 sm:text-base md:mt-12 md:text-lg"
+        className="hero-sub-shadow mt-10 max-w-[46ch] font-ui text-sm font-normal leading-relaxed text-white/90 sm:text-base md:mt-12 md:text-lg"
       >
         Discover who you are beneath the noise of society. Connect with your authentic self. Get back your inner drive.
       </motion.p>
