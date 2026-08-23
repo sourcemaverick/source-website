@@ -9,22 +9,41 @@ const blocks = [
   "You have enough information. What you need now is clarity and authenticity.",
 ];
 
-const Block = ({ text, index, progress }) => {
-  const n = blocks.length;
-  const start = index / n;
-  const peak = (index + 0.5) / n;
-  const end = (index + 1) / n;
+const Block = ({ text, index, progress, total }) => {
+  const slot = 1 / total;
+  const fade = slot * 0.18; // cross-fade width around each slot boundary
+  const t0 = index * slot;
+  const t1 = (index + 1) * slot;
+  const isFirst = index === 0;
+  const isLast = index === total - 1;
 
+  // Full opacity across the block's slot; only cross-fade near boundaries
   const opacity = useTransform(
     progress,
-    [start, peak - 0.02, peak + 0.02, end],
-    [0, 1, 1, 0]
+    [
+      isFirst ? 0 : t0 - fade,
+      isFirst ? 0 : t0 + fade,
+      isLast ? 1 : t1 - fade,
+      isLast ? 1 : t1 + fade,
+    ],
+    [isFirst ? 1 : 0, 1, 1, isLast ? 1 : 0]
   );
-  const y = useTransform(progress, [start, peak, end], [30, 0, -30]);
+
+  const y = useTransform(
+    progress,
+    [isFirst ? 0 : t0 - fade, (t0 + t1) / 2, isLast ? 1 : t1 + fade],
+    [isFirst ? 0 : 30, 0, isLast ? 0 : -30]
+  );
+
   const blur = useTransform(
     progress,
-    [start, peak - 0.03, peak + 0.03, end],
-    ["12px", "0px", "0px", "12px"]
+    [
+      isFirst ? 0 : t0 - fade,
+      isFirst ? 0 : t0 + fade,
+      isLast ? 1 : t1 - fade,
+      isLast ? 1 : t1 + fade,
+    ],
+    [isFirst ? "0px" : "12px", "0px", "0px", isLast ? "0px" : "12px"]
   );
 
   return (
@@ -67,7 +86,7 @@ export const ProblemSection = () => {
 
       <div className="pointer-events-none absolute inset-0">
         {blocks.map((t, i) => (
-          <Block key={i} text={t} index={i} progress={scrollYProgress} />
+          <Block key={i} text={t} index={i} progress={scrollYProgress} total={blocks.length} />
         ))}
       </div>
 

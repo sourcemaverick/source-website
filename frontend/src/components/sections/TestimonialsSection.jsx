@@ -33,7 +33,7 @@ export const TestimonialsSection = () => {
       className="relative overflow-hidden bg-[#050505] px-6 py-40 md:py-56"
     >
       <div className="mx-auto max-w-4xl text-center">
-        <SectionEyebrow className="mx-auto">Voices from the path</SectionEyebrow>
+        <SectionEyebrow className="mx-auto">What users are saying</SectionEyebrow>
 
         <div className="relative mt-16 min-h-[240px] md:min-h-[220px]">
           <AnimatePresence mode="wait">

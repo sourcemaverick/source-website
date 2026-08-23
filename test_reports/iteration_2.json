@@ -1,0 +1,24 @@
+{
+  "summary": "Verified all 4 reported bug fixes on The Source landing page (frontend only, no code changes). BUG1 (mobile sticky Download) PASS on both viewports: at 390x844 the [data-testid=mobile-download-cta] is visible in the fixed header (x=200,y=34) alongside [data-testid=mobile-menu-toggle], tap smooth-scrolls to [data-testid=download-section] (in-viewport) and the CTA remains visible after scroll (fixed header). At 1440x900 the parent wrapper computed display is 'none' (Tailwind md:hidden), offsetParent=null, rect 0x0 — properly hidden; [data-testid=nav-download-cta] is visible instead. BUG2 (Tell me more lands on block 0) PASS on desktop AND mobile: after clicking [data-testid=hero-cta] and 2.5s settle, [data-testid=problem-block-0] p opacity is exactly 1 and text begins with 'Today, we are never truly aware'. BUG3 (master portrait glow) PASS: [data-testid=master-figure] only has two sibling <div>s to the <img> — one bottom-fade linear-gradient (transparent → #050505) and one empty (bg:none) particle container; no golden radial-gradient/rgba(220,176,108) glow found anywhere around the image. BUG4 (Testimonials eyebrow) PASS: [data-testid=testimonials-section] eyebrow reads 'WHAT USERS ARE SAYING'; full-body innerText search for 'voices from the path' returns false. Regressions PASS: 5-block cross-fade shows correct block at opacity 1.00 (others 0.00) at progress peaks 0.0/0.1/0.3/0.5/0.7/0.9/1.0 (blocks 0/0/1/2/3/4/4 respectively — perfect); mobile menu overlay opens on toggle, body.style.overflow becomes 'hidden' and is restored to '' on close. Contact form POST /api/contact was validated as 200 in iteration 1 and code path unchanged in this iteration.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": ["/app/backend/tests/test_contact.py", "/app/test_reports/pytest/pytest_results.xml"],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "ProblemSection Block.opacity keyframe uses same t0-fade..t0+fade for both entry and exit windows — currently works because inputs are strictly increasing at every index, but the derivation relies on slot(0.2) > 2*fade(0.036) — if someone reduces slot count or increases fade this will silently break useTransform. Consider adding a runtime assert or clamping fade = min(fade, slot/2 - epsilon).",
+    "Header.jsx line 84 has `hidden items-center gap-2.5 md:hidden` — both `hidden` and `md:hidden` on a block that's dead code (empty status pill hidden always). Safe to remove.",
+    "Iteration-1 finding still open: ContactSection.jsx uses <input type=email> which lets the browser's native validation short-circuit React onSubmit, making the [data-testid=contact-error] path for invalid emails unreachable. Not part of this iteration's scope but still valid."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "n/a (not retested)", "frontend": "100% (4/4 bug fixes + 2/2 regressions)"},
+  "test_credentials": "n/a",
+  "seed_data_creation": "None",
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "All 4 reported bugs are verified fixed on live URL https://mind-nexus-dark.preview.emergentagent.com. Regressions clean. Only outstanding known issue from iteration 1 (unrelated to current iteration): contact form invalid-email UX shows browser-native tooltip instead of [data-testid=contact-error] because the <input type=email> intercepts submit. Preserved as code-review comment.",
+  "rca of the issue": "n/a — all fixes verified working"
+}

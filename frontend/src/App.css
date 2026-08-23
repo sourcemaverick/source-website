@@ -164,6 +164,10 @@ body {
   left: 120%;
 }
 
+.nav-download-cta--compact {
+  padding: 0.4rem 0.85rem;
+}
+
 .cta-glass {
   position: relative;
   overflow: hidden;

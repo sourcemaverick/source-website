@@ -88,39 +88,50 @@ export const Header = () => {
             </span>
           </div>
 
-          {/* Mobile hamburger */}
-          <button
-            type="button"
-            data-testid="mobile-menu-toggle"
-            onClick={() => setOpen((v) => !v)}
-            aria-label={open ? "Close menu" : "Open menu"}
-            aria-expanded={open}
-            className="relative flex h-9 w-9 items-center justify-center text-white/80 md:hidden"
-          >
-            <AnimatePresence mode="wait" initial={false}>
-              {open ? (
-                <motion.span
-                  key="x"
-                  initial={{ opacity: 0, rotate: -45 }}
-                  animate={{ opacity: 1, rotate: 0 }}
-                  exit={{ opacity: 0, rotate: 45 }}
-                  transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                >
-                  <X className="h-5 w-5" strokeWidth={1.2} />
-                </motion.span>
-              ) : (
-                <motion.span
-                  key="m"
-                  initial={{ opacity: 0, rotate: 45 }}
-                  animate={{ opacity: 1, rotate: 0 }}
-                  exit={{ opacity: 0, rotate: -45 }}
-                  transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                >
-                  <Menu className="h-5 w-5" strokeWidth={1.2} />
-                </motion.span>
-              )}
-            </AnimatePresence>
-          </button>
+          {/* Mobile right-side actions: sticky Download + hamburger */}
+          <div className="flex items-center gap-2 md:hidden">
+            <button
+              type="button"
+              data-testid="mobile-download-cta"
+              onClick={go(downloadLink.target)}
+              className="nav-download-cta nav-download-cta--compact font-ui text-[9px] uppercase tracking-[0.3em]"
+            >
+              Download
+            </button>
+
+            <button
+              type="button"
+              data-testid="mobile-menu-toggle"
+              onClick={() => setOpen((v) => !v)}
+              aria-label={open ? "Close menu" : "Open menu"}
+              aria-expanded={open}
+              className="relative flex h-9 w-9 items-center justify-center text-white/80"
+            >
+              <AnimatePresence mode="wait" initial={false}>
+                {open ? (
+                  <motion.span
+                    key="x"
+                    initial={{ opacity: 0, rotate: -45 }}
+                    animate={{ opacity: 1, rotate: 0 }}
+                    exit={{ opacity: 0, rotate: 45 }}
+                    transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                  >
+                    <X className="h-5 w-5" strokeWidth={1.2} />
+                  </motion.span>
+                ) : (
+                  <motion.span
+                    key="m"
+                    initial={{ opacity: 0, rotate: 45 }}
+                    animate={{ opacity: 1, rotate: 0 }}
+                    exit={{ opacity: 0, rotate: -45 }}
+                    transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                  >
+                    <Menu className="h-5 w-5" strokeWidth={1.2} />
+                  </motion.span>
+                )}
+              </AnimatePresence>
+            </button>
+          </div>
         </div>
       </motion.header>
 

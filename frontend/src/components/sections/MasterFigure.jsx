@@ -15,17 +15,6 @@ export const MasterFigure = () => (
     transition={{ duration: 2, ease: [0.22, 1, 0.36, 1] }}
     className="relative mx-auto aspect-square w-full max-w-[560px]"
   >
-    {/* Ambient outer halo bleed */}
-    <div
-      aria-hidden="true"
-      className="pointer-events-none absolute inset-0 -m-8"
-      style={{
-        background:
-          "radial-gradient(circle at 50% 35%, rgba(220, 176, 108, 0.28) 0%, rgba(220, 176, 108, 0.08) 30%, transparent 60%)",
-        filter: "blur(30px)",
-      }}
-    />
-
     {/* Photograph */}
     <img
       src={MASTER_IMG}
