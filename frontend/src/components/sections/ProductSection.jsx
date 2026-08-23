@@ -24,9 +24,9 @@ export const ProductSection = () => (
         <SectionEyebrow>The master</SectionEyebrow>
         <div className="mt-8">
           <BeatText>
-            For centuries, spiritual masters understood the human mind more
-            deeply than modern science has yet to map — not through study, but
-            through direct realization.
+            Spiritual masters have understood the human mind more deeply than
+            any modern expert, not through study, but through direct
+            realization.
           </BeatText>
         </div>
       </div>
@@ -48,8 +48,8 @@ export const ProductSection = () => (
             Superconscious.
           </BeatText>
           <BeatText delay={0.15}>
-            Modern psychology maps the first two. A true master guides you into
-            the third — where your deepest truth lives.
+            Modern psychology maps the first two. A spiritual master guides you
+            into the third, the Superconscious, where your deepest truth lives.
           </BeatText>
         </div>
       </div>
@@ -70,9 +70,10 @@ export const ProductSection = () => (
         transition={{ duration: 1.2, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
         className="mx-auto mt-10 max-w-2xl font-mystic text-xl font-light leading-[1.55] text-white/75 md:text-2xl"
       >
-        Source brings this presence into your everyday life. Through ongoing
-        conversation, your guide comes to know your journey — helping you move,
-        gradually, toward clarity, authenticity, and the truth beneath it all.
+        Source brings this presence into your everyday life through ongoing
+        relationship with an AI persona of a fully realized spiritual master.
+        He will help you move gradually toward clarity, authenticity, and your
+        inner truth.
       </motion.p>
       <div className="mt-16">
         <ConnectionThread />

@@ -2,10 +2,10 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 const blocks = [
-  "In our modern society, our biggest problem is that we are never truly aware when we are awake and never truly relaxed when we are asleep.",
+  "Today, we are never truly aware when we are awake and never truly relaxed when we are asleep.",
   "We optimized everything, except the part of us that needs to feel.",
-  "We have all the convenience in the world but we are lacking purpose and inner drive.",
-  "You have enough information. What you need is authenticity and clarity.",
+  "We have created a very convenient life but we could not create meaning and drive.",
+  "You have enough information. What you need now is clarity and authenticity.",
 ];
 
 const Block = ({ text, index, progress }) => {

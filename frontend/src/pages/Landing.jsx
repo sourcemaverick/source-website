@@ -21,9 +21,9 @@ export default function Landing() {
       <BenefitsSection />
       <DifferenceSection />
       <TestimonialsSection />
-      <ContactSection />
       <AppDownloadSection />
       <PartnersSection />
+      <ContactSection />
       <SiteFooter />
       <MysticCursor />
     </main>

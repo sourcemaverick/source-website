@@ -62,7 +62,7 @@ export const TestimonialsSection = () => {
                 "{t.quote}"
               </blockquote>
               <figcaption className="mt-8 font-ui text-[10px] uppercase tracking-[0.4em] text-white/50">
-                — {t.name}
+                {t.name}
               </figcaption>
             </motion.figure>
           </AnimatePresence>

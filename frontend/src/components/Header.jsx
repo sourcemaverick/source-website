@@ -3,12 +3,11 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
 const links = [
-  { label: "Problem", target: '[data-testid="problem-section"]' },
-  { label: "The Product", target: '[data-testid="product-section"]' },
-  { label: "Different", target: '[data-testid="difference-section"]' },
-  { label: "Download", target: '[data-testid="download-section"]' },
+  { label: "About", target: '[data-testid="problem-section"]' },
   { label: "Contact", target: '[data-testid="contact-section"]' },
 ];
+
+const downloadLink = { label: "Download", target: '[data-testid="download-section"]' };
 
 const scrollTo = (sel) => {
   const el = document.querySelector(sel);
@@ -64,8 +63,8 @@ export const Header = () => {
           </a>
 
           {/* Desktop nav */}
-          <nav className="hidden items-center gap-10 md:flex">
-            {links.slice(0, 4).map((l) => (
+          <nav className="hidden items-center gap-8 md:flex">
+            {links.map((l) => (
               <button
                 key={l.label}
                 onClick={go(l.target)}
@@ -75,10 +74,17 @@ export const Header = () => {
                 {l.label}
               </button>
             ))}
+            <button
+              onClick={go(downloadLink.target)}
+              data-testid="nav-download-cta"
+              className="nav-download-cta font-ui text-[10px] uppercase tracking-[0.3em]"
+            >
+              {downloadLink.label}
+            </button>
           </nav>
 
           {/* Desktop status */}
-          <div className="hidden items-center gap-2.5 md:flex">
+          <div className="hidden items-center gap-2.5 md:hidden">
             <span className="pulse-dot h-1.5 w-1.5 rounded-full bg-white/80" />
             <span className="font-ui text-[9px] uppercase tracking-[0.3em] text-white/40">
               Now Open
@@ -140,7 +146,7 @@ export const Header = () => {
             }}
           >
             <nav className="relative flex h-full flex-col items-start justify-center gap-6 px-8 pt-24">
-              {links.map((l, i) => (
+              {[...links, downloadLink].map((l, i) => (
                 <motion.button
                   key={l.label}
                   data-testid={`mobile-nav-${l.label.toLowerCase().replace(/\s+/g, "-")}-link`}

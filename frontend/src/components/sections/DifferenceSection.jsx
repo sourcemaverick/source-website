@@ -4,7 +4,7 @@ import { SectionEyebrow } from "@/components/sections/SectionHeading";
 const rows = [
   {
     heading: "Symptom vs. Source",
-    old: "Therapy treats what's on the surface — stress, anxiety, burnout.",
+    old: "Therapy treats what's on the surface, stress, anxiety, burnout.",
     source:
       "Source goes to what's underneath all of it: the disconnection from self that causes those symptoms in the first place.",
   },
@@ -12,19 +12,19 @@ const rows = [
     heading: "A session vs. a relationship",
     old: "Therapy happens for fifty minutes, once a week, if you're lucky enough to get the appointment.",
     source:
-      "Source is there at 2am, mid-decision, in the moment you actually need it — an ongoing relationship, not a scheduled hour.",
+      "Source is there at 2am, mid-decision, in the moment you actually need it, an ongoing relationship, not a scheduled hour.",
   },
   {
     heading: "Trained vs. realized",
     old: "A therapist studies the mind.",
     source:
-      "A true master has realized it — directly, at a depth no textbook reaches. Source is built on that realization, not a certification.",
+      "A true master has realized it, directly, at a depth no textbook reaches. Source is built on that realization, not a certification.",
   },
   {
     heading: "Managing vs. becoming",
     old: "Most tools help you manage your life as it is.",
     source:
-      "Source is built to change who you're becoming — moving you from coping, to clarity, to a life driven by real purpose.",
+      "Source is built to change who you're becoming, moving you from coping, to clarity, to a life driven by real purpose.",
   },
 ];
 
@@ -46,7 +46,7 @@ const Row = ({ row, index }) => (
       </p>
       <div className="hidden bg-[color:var(--gold)] opacity-30 md:block" />
       <p className="font-ui text-sm font-light leading-relaxed text-white/85 md:text-base">
-        <span className="font-mystic italic text-[color:var(--gold)]">Source — </span>
+        <span className="font-mystic italic text-[color:var(--gold)]">Source, </span>
         {row.source}
       </p>
     </div>
@@ -72,8 +72,8 @@ export const DifferenceSection = () => (
         Therapy helps you cope. Self-help gives you information.{" "}
         <span className="italic text-[color:var(--gold)]">
           Source offers something neither can
-        </span>{" "}
-        — a relationship with a wisdom built to take you all the way home.
+        </span>
+        , a relationship with a wisdom built to take you all the way home.
       </motion.p>
 
       <div className="mt-24">
