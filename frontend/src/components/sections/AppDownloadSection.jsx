@@ -48,7 +48,7 @@ export const AppDownloadSection = () => (
       >
         <Badge
           testId="download-appstore"
-          href="#"
+          href="https://apps.apple.com/in/app/source-inner-transformation/id6761737790"
           sub="Download on the"
           label="App Store"
           icon={
@@ -59,7 +59,7 @@ export const AppDownloadSection = () => (
         />
         <Badge
           testId="download-playstore"
-          href="#"
+          href="https://play.google.com/apps/testing/com.superreal.source.android"
           sub="Get it on"
           label="Google Play"
           icon={
@@ -71,7 +71,7 @@ export const AppDownloadSection = () => (
       </motion.div>
 
       <p className="mt-8 font-ui text-[10px] uppercase tracking-[0.3em] text-white/25">
-        Coming soon
+        Available now
       </p>
     </div>
   </section>
