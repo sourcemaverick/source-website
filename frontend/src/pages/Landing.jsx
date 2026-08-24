@@ -1,6 +1,7 @@
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { MysticCursor } from "@/components/MysticCursor";
+import { SmoothScroll } from "@/components/SmoothScroll";
 import { ProblemSection } from "@/components/sections/ProblemSection";
 import { ProductSection } from "@/components/sections/ProductSection";
 import { BenefitsSection } from "@/components/sections/BenefitsSection";
@@ -14,6 +15,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 export default function Landing() {
   return (
     <main data-testid="landing-page" className="grain relative w-full bg-[#050505]">
+      <SmoothScroll />
       <Header />
       <Hero />
       <ProblemSection />

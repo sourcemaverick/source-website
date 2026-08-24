@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import { AmbientSoundToggle } from "@/components/AmbientSoundToggle";
+import { smoothScrollTo, smoothScrollToTop } from "@/components/SmoothScroll";
 
 const links = [
   { label: "About", target: '[data-testid="problem-section"]' },
@@ -9,10 +11,7 @@ const links = [
 
 const downloadLink = { label: "Download", target: '[data-testid="download-section"]' };
 
-const scrollTo = (sel) => {
-  const el = document.querySelector(sel);
-  if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-};
+const scrollTo = (sel) => smoothScrollTo(sel);
 
 export const Header = () => {
   const [open, setOpen] = useState(false);
@@ -22,8 +21,11 @@ export const Header = () => {
     if (open) {
       const prev = document.body.style.overflow;
       document.body.style.overflow = "hidden";
+      // Also pause Lenis (if present) so wheel/touch doesn't scroll the page beneath
+      window.__lenis?.stop();
       return () => {
         document.body.style.overflow = prev;
+        window.__lenis?.start();
       };
     }
   }, [open]);
@@ -51,7 +53,7 @@ export const Header = () => {
             onClick={(e) => {
               e.preventDefault();
               setOpen(false);
-              window.scrollTo({ top: 0, behavior: "smooth" });
+              smoothScrollToTop();
             }}
           >
             <span className="font-mystic text-lg font-medium tracking-wide text-white md:text-2xl">
@@ -78,6 +80,7 @@ export const Header = () => {
             >
               {downloadLink.label}
             </button>
+            <AmbientSoundToggle className="ml-1" />
           </nav>
 
           {/* Desktop status */}
@@ -88,8 +91,9 @@ export const Header = () => {
             </span>
           </div>
 
-          {/* Mobile right-side actions: sticky Download + hamburger */}
-          <div className="flex items-center gap-2 md:hidden">
+          {/* Mobile right-side actions: sound + sticky Download + hamburger */}
+          <div className="flex items-center gap-1.5 md:hidden">
+            <AmbientSoundToggle />
             <button
               type="button"
               data-testid="mobile-download-cta"

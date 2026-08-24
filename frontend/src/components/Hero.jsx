@@ -1,13 +1,11 @@
 import { motion } from "framer-motion";
 import { BlurTextReveal } from "@/components/BlurTextReveal";
 import { FooterStrip } from "@/components/FooterStrip";
+import { smoothScrollTo } from "@/components/SmoothScroll";
 
 const ease = [0.22, 1, 0.36, 1];
 
-const scrollDown = () => {
-  const el = document.querySelector('[data-testid="problem-section"]');
-  if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-};
+const scrollDown = () => smoothScrollTo('[data-testid="problem-section"]');
 
 export const Hero = () => (
   <section
