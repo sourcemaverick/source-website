@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import { AmbientSoundToggle } from "@/components/AmbientSoundToggle";
 import { smoothScrollTo, smoothScrollToTop } from "@/components/SmoothScroll";
 
 const links = [
@@ -80,7 +79,6 @@ export const Header = () => {
             >
               {downloadLink.label}
             </button>
-            <AmbientSoundToggle className="ml-1" />
           </nav>
 
           {/* Desktop status */}
@@ -91,9 +89,8 @@ export const Header = () => {
             </span>
           </div>
 
-          {/* Mobile right-side actions: sound + sticky Download + hamburger */}
-          <div className="flex items-center gap-1.5 md:hidden">
-            <AmbientSoundToggle />
+          {/* Mobile right-side actions: sticky Download + hamburger */}
+          <div className="flex items-center gap-2 md:hidden">
             <button
               type="button"
               data-testid="mobile-download-cta"
