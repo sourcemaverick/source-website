@@ -23,12 +23,13 @@ const legalLinks = [
   { label: "Support", to: "/support", testId: "footer-support" },
 ];
 
+// Only networks with a real href are shown; add a URL to re-enable one.
 const socials = [
-  { name: "Instagram", Icon: Instagram, href: "#", testId: "social-instagram" },
-  { name: "TikTok", Icon: TikTokIcon, href: "#", testId: "social-tiktok" },
-  { name: "YouTube", Icon: Youtube, href: "#", testId: "social-youtube" },
-  { name: "X", Icon: XIcon, href: "#", testId: "social-x" },
-];
+  { name: "Instagram", Icon: Instagram, href: "https://www.instagram.com/sourcespirituality/", testId: "social-instagram" },
+  { name: "TikTok", Icon: TikTokIcon, href: null, testId: "social-tiktok" },
+  { name: "YouTube", Icon: Youtube, href: null, testId: "social-youtube" },
+  { name: "X", Icon: XIcon, href: null, testId: "social-x" },
+].filter((s) => s.href);
 
 export const SiteFooter = () => (
   <footer
