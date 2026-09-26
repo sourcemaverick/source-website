@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 
 const legalLinks = [
   { label: "Privacy", href: "/privacy" },
@@ -58,12 +59,12 @@ export default function Footer() {
         </div>
 
         <div className="flex flex-col items-center justify-between gap-4 border-t border-[var(--border-subtle)] pt-6 sm:flex-row">
-          <a href="#" className="group flex items-center gap-2.5">
+          <Link href="/" className="group flex items-center gap-2.5">
             <Image src="/source_logo.png" alt="Source" width={24} height={24} className="opacity-70 transition-all duration-300 group-hover:opacity-100" />
             <span className="font-serif text-[15px] text-[var(--text-secondary)] transition-colors duration-300 group-hover:text-white">
               Source
             </span>
-          </a>
+          </Link>
 
           <div className="flex items-center gap-4">
             <span className="text-[11px] tracking-wider text-[var(--text-muted)]">

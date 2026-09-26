@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import { navLinks } from "@/lib/constants";
 
 export default function Navbar() {
@@ -38,7 +39,7 @@ export default function Navbar() {
           }`}
         >
           {/* Logo */}
-          <a href="#" className="flex items-center gap-2.5 group relative">
+          <Link href="/" className="flex items-center gap-2.5 group relative">
             <div className="relative">
               <Image
                 src="/source_logo.png"
@@ -52,7 +53,7 @@ export default function Navbar() {
             <span className="text-[19px] font-serif tracking-[0.01em] text-[var(--text-primary)]">
               Source
             </span>
-          </a>
+          </Link>
 
           {/* Desktop nav */}
           <div className="hidden md:flex items-center gap-1">
@@ -65,12 +66,12 @@ export default function Navbar() {
                 {link.label}
               </a>
             ))}
-            <a
-              href="#waitlist"
+            <Link
+              href="/#waitlist"
               className="btn-gold btn-shine ml-3 text-[12px] px-6 py-2.5 rounded-full"
             >
               Join the Waitlist
-            </a>
+            </Link>
           </div>
 
           {/* Mobile toggle */}
@@ -124,7 +125,7 @@ export default function Navbar() {
               </motion.a>
             ))}
             <motion.a
-              href="#waitlist"
+              href="/#waitlist"
               onClick={() => setMobileOpen(false)}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}

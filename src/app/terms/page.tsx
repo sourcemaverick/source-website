@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import LegalPage, { Contents, Section, SubSection, Notice, Tag, Table, Colophon } from "@/components/legal/LegalPage";
 
 export const metadata: Metadata = {
   title: "Terms and Conditions — Source",
@@ -11,59 +10,48 @@ export const metadata: Metadata = {
 const EFFECTIVE_DATE = "07-01-2026";
 const CONTACT_EMAIL = "animesh@sourcemaverick.ai";
 
+const contents = [
+  { id: "s1", label: "The Source Platform" },
+  { id: "s2", label: "Eligibility and Account Registration" },
+  { id: "s3", label: "Intellectual Property" },
+  { id: "s4", label: "Acceptable Use" },
+  { id: "s5", label: "AI-Generated Content Disclaimer" },
+  { id: "s6", label: "Privacy and Data" },
+  { id: "s7", label: "Export Controls" },
+  { id: "s8", label: "Payments and Subscriptions" },
+  { id: "s9", label: "Termination" },
+  { id: "s10", label: "Disclaimer of Warranties" },
+  { id: "s11", label: "Limitation of Liability" },
+  { id: "s12", label: "Indemnification" },
+  { id: "s13", label: "Force Majeure" },
+  { id: "s14", label: "Dispute Resolution" },
+  { id: "s15", label: "Modifications" },
+  { id: "s16", label: "General Provisions" },
+];
+
 export default function TermsPage() {
   return (
-    <>
-      <Navbar />
-      <main className="relative mx-auto max-w-3xl px-6 py-16 text-neutral-200 sm:py-24">
-        <header className="mb-12 text-center">
-          <p className="font-mono text-xs uppercase tracking-[0.2em] text-neutral-400">
-            Source
-          </p>
-          <h1 className="mt-2 text-4xl font-light tracking-tight text-neutral-100 sm:text-5xl">
-            Terms and Conditions of Use
-          </h1>
-          <p className="mt-2 text-sm text-neutral-400">
-            Source Platform · Version 3.0
-          </p>
-          <p className="mt-2 text-sm text-neutral-400">
-            Effective Date: {EFFECTIVE_DATE}
-          </p>
-        </header>
+    <LegalPage
+      label="Legal"
+      title="Terms and Conditions of Use"
+      meta={
+        <>
+          <p>Source Platform · Version 3.0</p>
+          <p>Effective Date: {EFFECTIVE_DATE}</p>
+        </>
+      }
+    >
 
-        <div className="mb-8 space-y-4 text-base leading-relaxed text-neutral-300">
+        <div className="mb-8 space-y-4 text-[15px] font-light leading-[1.85] text-[var(--text-secondary)]">
           <p>
             These Terms and Conditions ("Terms") constitute a legally binding agreement between you ("User," "you," or "your") and Super Real Inc., a Delaware corporation ("Super Real," "we," "us," or "our"), governing your access to and use of the Source mobile application and all related services, features, AI-generated content, and digital experiences (collectively, the "Platform"). By downloading, installing, accessing, or using the Platform in any manner, you acknowledge that you have read, understood, and agree to be bound by these Terms in their entirety. If you do not agree to any provision of these Terms, you must immediately discontinue all use of the Platform and uninstall the application.
           </p>
         </div>
 
-        <WarningBanner>
+        <Notice>
           PLEASE READ THESE TERMS CAREFULLY. THEY CONTAIN A MANDATORY ARBITRATION AGREEMENT, A CLASS ACTION WAIVER, AND LIMITATIONS ON SUPER REAL'S LIABILITY. YOUR CONTINUED USE OF THE PLATFORM CONSTITUTES YOUR ACCEPTANCE OF THESE TERMS.
-        </WarningBanner>
-
-        <nav className="mb-12 rounded-lg border border-neutral-800 bg-neutral-900/50 p-6">
-          <h2 className="mb-4 text-sm font-medium uppercase tracking-widest text-neutral-400">
-            Contents
-          </h2>
-          <ol className="grid grid-cols-1 gap-2 text-sm text-neutral-300 md:grid-cols-2">
-            <li><a href="#s1" className="text-blue-400 hover:underline">1. The Source Platform</a></li>
-            <li><a href="#s2" className="text-blue-400 hover:underline">2. Eligibility and Account Registration</a></li>
-            <li><a href="#s3" className="text-blue-400 hover:underline">3. Intellectual Property</a></li>
-            <li><a href="#s4" className="text-blue-400 hover:underline">4. Acceptable Use</a></li>
-            <li><a href="#s5" className="text-blue-400 hover:underline">5. AI-Generated Content Disclaimer</a></li>
-            <li><a href="#s6" className="text-blue-400 hover:underline">6. Privacy and Data</a></li>
-            <li><a href="#s7" className="text-blue-400 hover:underline">7. Export Controls</a></li>
-            <li><a href="#s8" className="text-blue-400 hover:underline">8. Payments and Subscriptions</a></li>
-            <li><a href="#s9" className="text-blue-400 hover:underline">9. Termination</a></li>
-            <li><a href="#s10" className="text-blue-400 hover:underline">10. Disclaimer of Warranties</a></li>
-            <li><a href="#s11" className="text-blue-400 hover:underline">11. Limitation of Liability</a></li>
-            <li><a href="#s12" className="text-blue-400 hover:underline">12. Indemnification</a></li>
-            <li><a href="#s13" className="text-blue-400 hover:underline">13. Force Majeure</a></li>
-            <li><a href="#s14" className="text-blue-400 hover:underline">14. Dispute Resolution</a></li>
-            <li><a href="#s15" className="text-blue-400 hover:underline">15. Modifications</a></li>
-            <li><a href="#s16" className="text-blue-400 hover:underline">16. General Provisions</a></li>
-          </ol>
-        </nav>
+        </Notice>
+        <Contents items={contents} />
 
         <Section id="s1" title="1. The Source Platform">
           <SubSection title="1.1 Platform Description">
@@ -78,9 +66,7 @@ export default function TermsPage() {
             </p>
           </SubSection>
 
-          <div className="my-6 rounded-lg border-l-4 border-blue-400 bg-neutral-900/50 p-4 italic font-medium text-neutral-300">
-            ⊳ NEW – Beta and Alpha Services
-          </div>
+          <Tag>New · Beta and Alpha Services</Tag>
 
           <SubSection title="1.3 Pre-Release and Beta Services">
             <p>
@@ -98,7 +84,7 @@ export default function TermsPage() {
 
           <SubSection title="2.2 Account Obligations">
             <p>You are solely responsible for maintaining the security and confidentiality of your account credentials and for all activity that occurs under your account. You agree to:</p>
-            <ul className="ml-5 list-disc space-y-2">
+            <ul className="space-y-2">
               <li>Provide accurate, current, and complete registration information at all times</li>
               <li>Promptly update your account information if any details change</li>
               <li>Notify Super Real immediately at {CONTACT_EMAIL} of any actual or suspected unauthorized access to or use of your account</li>
@@ -152,7 +138,7 @@ export default function TermsPage() {
 
           <SubSection title="4.2 Prohibited Conduct">
             <p>You expressly agree not to engage in, facilitate, or encourage any of the following:</p>
-            <ul className="ml-5 list-disc space-y-2">
+            <ul className="space-y-2">
               <li>Impersonate, defame, harass, threaten, stalk, or generate harmful, abusive, or demeaning content targeting any Featured Individual, other User, or any third party</li>
               <li>Use the Platform to generate, distribute, or facilitate the creation of deepfake content, synthetic media, non-consensual intimate imagery, or AI-generated content that falsely attributes statements or views to any Featured Individual outside the Platform</li>
               <li>Attempt to extract, copy, reconstruct, or replicate any LLM, voice model, or AI system underlying the Platform through any means, including prompt injection, jailbreaking, adversarial attacks, model inversion, membership inference attacks, or systematic querying</li>
@@ -174,16 +160,16 @@ export default function TermsPage() {
             The Platform employs generative artificial intelligence technologies that produce dynamic, algorithmically generated outputs. These outputs are inherently probabilistic and are subject to error. Super Real does not guarantee the accuracy, completeness, reliability, timeliness, or fitness for any particular purpose of any content generated by avatar LLMs.
           </p>
           <p className="mt-3">AI-generated content on the Platform:</p>
-          <ul className="ml-5 list-disc space-y-2">
+          <ul className="space-y-2">
             <li>Does not constitute professional advice of any kind, including without limitation legal, financial, medical, psychological, psychiatric, or spiritual advice</li>
             <li>May contain factual errors, hallucinations, fabrications, or outputs that do not reflect the actual views, beliefs, or teachings of the Featured Individual</li>
             <li>Must not be relied upon as a substitute for consultation with a qualified, licensed professional</li>
             <li>Is not reviewed or approved by the Featured Individual prior to delivery</li>
           </ul>
-          <LegalWarning>
+          <Notice compact>
             <p>Super Real expressly disclaims any and all liability for any decision made, action taken, or harm suffered in reliance on AI-generated content on the Platform.</p>
             <p>IMPORTANT MENTAL AND SPIRITUAL WELLNESS NOTICE: The Source Platform features AI-generated representations of spiritual leaders and wellness practitioners. THESE REPRESENTATIONS DO NOT PROVIDE SPIRITUAL DIRECTION, RELIGIOUS COUNSEL, MENTAL HEALTH THERAPY, CRISIS INTERVENTION, OR ANY FORM OF CLINICAL OR PASTORAL CARE. If you are experiencing a mental health crisis, suicidal ideation, spiritual distress, or any psychological emergency, please contact a licensed mental health professional or call your local emergency services immediately. DO NOT rely on any Platform interaction as a substitute for qualified human support. Super Real expressly disclaims all liability for harm arising from reliance on Platform content in any wellness, mental health, or spiritual context.</p>
-          </LegalWarning>
+          </Notice>
         </Section>
 
         <Section id="s6" title="6. Privacy and Data">
@@ -201,7 +187,7 @@ export default function TermsPage() {
             <p>
               Where applicable law grants you rights in respect of your personal data, including under the EU General Data Protection Regulation ("GDPR"), the UK GDPR, Turkey's Personal Data Protection Law ("KVKK"), or India's Digital Personal Data Protection Act ("DPDP Act"), you may exercise the following rights by contacting Super Real at {CONTACT_EMAIL}:
             </p>
-            <ul className="ml-5 list-disc space-y-2">
+            <ul className="space-y-2">
               <li><strong>Right of Access:</strong> request a copy of the personal data Super Real holds about you</li>
               <li><strong>Right to Erasure:</strong> request deletion of your personal data, subject to any retention obligations required by law</li>
               <li><strong>Right to Rectification:</strong> request correction of inaccurate personal data</li>
@@ -218,7 +204,7 @@ export default function TermsPage() {
           <p>
             The Platform incorporates artificial intelligence technology and software that may be subject to United States export control laws and regulations, including the Export Administration Regulations ("EAR") administered by the U.S. Department of Commerce and economic sanctions programs administered by the U.S. Department of the Treasury's Office of Foreign Assets Control ("OFAC"). You represent and warrant that:
           </p>
-          <ul className="ml-5 list-disc space-y-2">
+          <ul className="space-y-2">
             <li>You are not located in, or a national or resident of, any country subject to a U.S. government embargo or designated as a "terrorist-supporting" country</li>
             <li>You are not listed on any U.S. government list of prohibited or restricted parties, including OFAC's Specially Designated Nationals List</li>
             <li>You will not use the Platform for any purpose prohibited by U.S. export laws, including without limitation the development, design, manufacture, or production of weapons of mass destruction</li>
@@ -249,7 +235,7 @@ export default function TermsPage() {
             <p>
               The availability of specific Featured Individuals and their digital avatars on the Platform is contingent upon the continuation of applicable licensing agreements between Super Real and those Featured Individuals. Super Real reserves the right to remove, suspend, or modify any avatar, content, or feature at any time, including in the event that a Featured Individual withdraws their consent or terminates their agreement with Super Real. In such circumstances:
             </p>
-            <ul className="ml-5 list-disc space-y-2">
+            <ul className="space-y-2">
               <li>Super Real will use commercially reasonable efforts to provide advance notice where practicable</li>
               <li>Your sole remedy shall be a pro-rated credit for any unused prepaid subscription period attributable to the removed avatar, at Super Real's discretion</li>
               <li>Super Real shall not be liable for any consequential, indirect, or other damages arising from such removal</li>
@@ -285,23 +271,23 @@ export default function TermsPage() {
         </Section>
 
         <Section id="s10" title="10. Disclaimer of Warranties">
-          <LegalWarning>
+          <Notice compact>
             <p>
               THE PLATFORM, INCLUDING ALL CONTENT, AI-GENERATED OUTPUTS, AVATARS, AND RELATED SERVICES, IS PROVIDED ON AN "AS IS" AND "AS AVAILABLE" BASIS, WITHOUT WARRANTIES OF ANY KIND, WHETHER EXPRESS, IMPLIED, STATUTORY, OR OTHERWISE. TO THE FULLEST EXTENT PERMITTED BY APPLICABLE LAW, SUPER REAL INC. EXPRESSLY DISCLAIMS ALL WARRANTIES, INCLUDING WITHOUT LIMITATION WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, NON-INFRINGEMENT, ACCURACY, RELIABILITY, AND ANY WARRANTIES ARISING OUT OF COURSE OF DEALING, USAGE, OR TRADE PRACTICE. SUPER REAL DOES NOT WARRANT THAT: (A) THE PLATFORM WILL OPERATE WITHOUT INTERRUPTION OR ERROR; (B) THE PLATFORM IS FREE OF VIRUSES OR OTHER HARMFUL COMPONENTS; (C) AI-GENERATED OUTPUTS WILL BE ACCURATE, COMPLETE, OR APPROPRIATE FOR YOUR PURPOSES; OR (D) ANY ERRORS OR DEFECTS IN THE PLATFORM WILL BE CORRECTED. NO ORAL OR WRITTEN INFORMATION OR ADVICE PROVIDED BY SUPER REAL OR ITS REPRESENTATIVES SHALL CREATE ANY WARRANTY.
             </p>
-          </LegalWarning>
+          </Notice>
         </Section>
 
         <Section id="s11" title="11. Limitation of Liability">
-          <LegalWarning>
+          <Notice compact>
             <p>
               TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, SUPER REAL INC., AND ITS OFFICERS, DIRECTORS, EMPLOYEES, AGENTS, LICENSORS, FEATURED INDIVIDUALS, AND SERVICE PROVIDERS SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, PUNITIVE, OR EXEMPLARY DAMAGES OF ANY KIND, INCLUDING WITHOUT LIMITATION LOSS OF PROFITS, REVENUE, DATA, BUSINESS, GOODWILL, OR ANTICIPATED SAVINGS, ARISING OUT OF OR IN ANY WAY RELATED TO: (A) YOUR ACCESS TO OR USE OF, OR INABILITY TO ACCESS OR USE, THE PLATFORM; (B) ANY AI-GENERATED CONTENT OR AVATAR OUTPUT; (C) ANY UNAUTHORIZED ACCESS TO OR ALTERATION OF YOUR ACCOUNT OR DATA; (D) ANY DECISION MADE OR ACTION TAKEN IN RELIANCE ON PLATFORM CONTENT; OR (E) ANY OTHER MATTER RELATING TO THE PLATFORM. THIS LIMITATION APPLIES REGARDLESS OF THE LEGAL THEORY UNDER WHICH LIABILITY IS SOUGHT AND EVEN IF SUPER REAL HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
             </p>
             <p className="mt-3">
               IN NO EVENT SHALL SUPER REAL'S TOTAL AGGREGATE LIABILITY TO YOU FOR ALL CLAIMS ARISING OUT OF OR RELATING TO THESE TERMS OR THE PLATFORM EXCEED THE GREATER OF: (A) THE TOTAL AMOUNTS ACTUALLY PAID BY YOU TO SUPER REAL IN THE TWELVE (12) CALENDAR MONTHS IMMEDIATELY PRECEDING THE EVENT GIVING RISE TO THE CLAIM; OR (B) ONE HUNDRED UNITED STATES DOLLARS (USD $100.00). THE EXISTENCE OF MORE THAN ONE CLAIM WILL NOT EXPAND THIS LIMIT.
             </p>
-          </LegalWarning>
-          <p className="mt-4 text-sm italic text-neutral-400">
+          </Notice>
+          <p className="mt-4 text-sm italic text-[var(--text-muted)]">
             Some jurisdictions do not allow the exclusion or limitation of certain damages. In such jurisdictions, Super Real's liability shall be limited to the maximum extent permitted by applicable law.
           </p>
         </Section>
@@ -310,7 +296,7 @@ export default function TermsPage() {
           <p>
             To the fullest extent permitted by applicable law, you agree to defend, indemnify, and hold harmless Super Real Inc. and its officers, directors, shareholders, employees, contractors, agents, licensors, Featured Individuals, and service providers (collectively, "Indemnified Parties") from and against any and all claims, liabilities, damages, losses, judgments, awards, costs, and expenses (including reasonable attorneys' fees and litigation costs) arising out of or relating to:
           </p>
-          <ul className="ml-5 list-disc space-y-2">
+          <ul className="space-y-2">
             <li>Your violation of any provision of these Terms</li>
             <li>Your User Content</li>
             <li>Your use of the Platform in a manner not authorized by these Terms</li>
@@ -343,11 +329,11 @@ export default function TermsPage() {
           </SubSection>
 
           <SubSection title="14.3 Class Action and Jury Trial Waiver">
-            <LegalWarning>
+            <Notice compact>
               <p>
                 YOU AND SUPER REAL EACH WAIVE THE RIGHT TO A TRIAL BY JURY AND THE RIGHT TO PARTICIPATE IN ANY CLASS ACTION, COLLECTIVE ACTION, PRIVATE ATTORNEY GENERAL ACTION, OR OTHER REPRESENTATIVE PROCEEDING OF ANY KIND. ALL ARBITRATIONS SHALL PROCEED ON AN INDIVIDUAL BASIS ONLY. IF THIS CLASS ACTION WAIVER IS FOUND TO BE UNENFORCEABLE IN WHOLE OR IN PART, THE ARBITRATION AGREEMENT IN SECTION 14.2 SHALL BE NULL AND VOID WITH RESPECT TO THOSE CLAIMS.
               </p>
-            </LegalWarning>
+            </Notice>
           </SubSection>
 
           <SubSection title="14.4 Informal Resolution Requirement">
@@ -419,112 +405,12 @@ export default function TermsPage() {
           </SubSection>
         </Section>
 
-        <footer className="mt-16 border-t border-neutral-800 pt-8 text-center text-sm text-neutral-500">
-          <p>
-            <strong>Super Real Inc.</strong><br />
+        <Colophon>
+          <p><strong>Super Real Inc.</strong><br />
             {CONTACT_EMAIL}<br />
             Last Updated: {EFFECTIVE_DATE} | Version 3.0<br />
-            © {new Date().getFullYear()} Super Real Inc. All rights reserved.
-          </p>
-        </footer>
-      </main>
-      <Footer />
-    </>
-  );
-}
-
-function Section({
-  id,
-  title,
-  children,
-}: {
-  id?: string;
-  title: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <section id={id} className="mb-10 scroll-mt-20">
-      <h2 className="mb-4 text-2xl font-light text-neutral-100">{title}</h2>
-      <div className="space-y-3 text-base leading-relaxed text-neutral-300">
-        {children}
-      </div>
-    </section>
-  );
-}
-
-function SubSection({
-  title,
-  children,
-}: {
-  title: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <div className="mb-4">
-      <h3 className="mb-2 text-lg font-medium text-neutral-200">{title}</h3>
-      <div className="space-y-2 text-base leading-relaxed text-neutral-300">
-        {children}
-      </div>
-    </div>
-  );
-}
-
-function WarningBanner({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="mb-12 rounded-lg border border-red-900 bg-red-950/30 p-6 font-medium text-red-200">
-      {children}
-    </div>
-  );
-}
-
-function LegalWarning({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="my-6 rounded-lg border border-red-900 bg-red-950/20 p-4 text-sm font-medium text-red-200">
-      {children}
-    </div>
-  );
-}
-
-function Table({
-  headers,
-  rows,
-}: {
-  headers: string[];
-  rows: (string | React.ReactNode)[][];
-}) {
-  return (
-    <div className="my-4 overflow-x-auto">
-      <table className="w-full text-sm">
-        <thead>
-          <tr className="border-b border-neutral-700">
-            {headers.map((header) => (
-              <th
-                key={header}
-                className="bg-neutral-900 px-4 py-3 text-left font-medium text-neutral-100"
-              >
-                {header}
-              </th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {rows.map((row, idx) => (
-            <tr
-              key={idx}
-              className="border-b border-neutral-800 hover:bg-neutral-900/30"
-            >
-              {row.map((cell, cellIdx) => (
-                <td
-                  key={cellIdx}
-                  className="px-4 py-3 text-neutral-300"
-                >
-                  {cell}
-                </td>
-              ))}
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+            © {new Date().getFullYear()} Super Real Inc. All rights reserved.</p>
+        </Colophon>
+    </LegalPage>
   );
 }

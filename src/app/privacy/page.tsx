@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import LegalPage, { Contents, Section, SubSection, Callout, Table, Colophon } from "@/components/legal/LegalPage";
 
 export const metadata: Metadata = {
   title: "Privacy Policy — Source",
@@ -11,48 +10,39 @@ export const metadata: Metadata = {
 const EFFECTIVE_DATE = "06/30/2026";
 const CONTACT_EMAIL = "animesh@sourcemaverick.ai";
 
+const contents = [
+  { id: "s1", label: "Introduction" },
+  { id: "s2", label: "Who We Are" },
+  { id: "s3", label: "Information We Collect" },
+  { id: "s4", label: "How We Use Your Information" },
+  { id: "s5", label: "Third-Party Service Providers" },
+  { id: "s6", label: "Data We Do Not Sell" },
+  { id: "s7", label: "Data Retention" },
+  { id: "s8", label: "Data Security" },
+  { id: "s9", label: "Your Rights" },
+  { id: "s10", label: "AI Transparency" },
+  { id: "s11", label: "Spiritual Personas" },
+  { id: "s12", label: "Wellness Platform" },
+  { id: "s13", label: "Children's Privacy" },
+  { id: "s14", label: "California Rights" },
+  { id: "s15", label: "GDPR (EU Users)" },
+  { id: "s16", label: "India (DPDP)" },
+  { id: "s17", label: "Changes" },
+  { id: "s18", label: "Contact Us" },
+];
+
 export default function PrivacyPolicyPage() {
   return (
-    <>
-      <Navbar />
-      <main className="relative mx-auto max-w-3xl px-6 py-16 text-neutral-200 sm:py-24">
-        <header className="mb-12">
-          <p className="font-mono text-xs uppercase tracking-[0.2em] text-neutral-400">
-            Source
-          </p>
-          <h1 className="mt-2 text-4xl font-light tracking-tight text-neutral-100 sm:text-5xl">
-            Privacy Policy
-          </h1>
-          <p className="mt-1 text-sm text-neutral-400">
-            Effective Date: {EFFECTIVE_DATE} · Last Updated: {EFFECTIVE_DATE}
-          </p>
-        </header>
-
-        <nav className="mb-12 rounded-lg border border-neutral-800 bg-neutral-900/50 p-6">
-          <h2 className="mb-4 text-sm font-medium uppercase tracking-widest text-neutral-400">
-            Contents
-          </h2>
-          <ol className="grid grid-cols-1 gap-2 text-sm text-neutral-300 md:grid-cols-2">
-            <li><a href="#s1" className="text-blue-400 hover:underline">1. Introduction</a></li>
-            <li><a href="#s2" className="text-blue-400 hover:underline">2. Who We Are</a></li>
-            <li><a href="#s3" className="text-blue-400 hover:underline">3. Information We Collect</a></li>
-            <li><a href="#s4" className="text-blue-400 hover:underline">4. How We Use Your Information</a></li>
-            <li><a href="#s5" className="text-blue-400 hover:underline">5. Third-Party Service Providers</a></li>
-            <li><a href="#s6" className="text-blue-400 hover:underline">6. Data We Do Not Sell</a></li>
-            <li><a href="#s7" className="text-blue-400 hover:underline">7. Data Retention</a></li>
-            <li><a href="#s8" className="text-blue-400 hover:underline">8. Data Security</a></li>
-            <li><a href="#s9" className="text-blue-400 hover:underline">9. Your Rights</a></li>
-            <li><a href="#s10" className="text-blue-400 hover:underline">10. AI Transparency</a></li>
-            <li><a href="#s11" className="text-blue-400 hover:underline">11. Spiritual Personas</a></li>
-            <li><a href="#s12" className="text-blue-400 hover:underline">12. Wellness Platform</a></li>
-            <li><a href="#s13" className="text-blue-400 hover:underline">13. Children's Privacy</a></li>
-            <li><a href="#s14" className="text-blue-400 hover:underline">14. California Rights</a></li>
-            <li><a href="#s15" className="text-blue-400 hover:underline">15. GDPR (EU Users)</a></li>
-            <li><a href="#s16" className="text-blue-400 hover:underline">16. India (DPDP)</a></li>
-            <li><a href="#s17" className="text-blue-400 hover:underline">17. Changes</a></li>
-            <li><a href="#s18" className="text-blue-400 hover:underline">18. Contact Us</a></li>
-          </ol>
-        </nav>
+    <LegalPage
+      label="Legal"
+      title="Privacy Policy"
+      meta={
+        <>
+          <p>Effective Date: {EFFECTIVE_DATE} · Last Updated: {EFFECTIVE_DATE}</p>
+        </>
+      }
+    >
+        <Contents items={contents} />
 
         <Section id="s1" title="1. Introduction — What This Policy Covers">
           <p>
@@ -83,7 +73,7 @@ export default function PrivacyPolicyPage() {
           <p>We collect the following categories of personal information:</p>
 
           <SubSection title="3.1 Account and Identity Information">
-            <ul className="ml-5 list-disc space-y-2">
+            <ul className="space-y-2">
               <li>Full name – provided at registration</li>
               <li>Email address – required to create and maintain your account</li>
               <li>Profile picture – optionally provided by you</li>
@@ -92,15 +82,15 @@ export default function PrivacyPolicyPage() {
           </SubSection>
 
           <SubSection title="3.2 Conversation Data">
-            <ul className="ml-5 list-disc space-y-2">
+            <ul className="space-y-2">
               <li>The full text of your messages and AI persona responses across all sessions</li>
               <li>Derived memory data – contextual profiles built from past conversations by Source's proprietary memory architecture, used to personalise your future sessions</li>
             </ul>
-            <p className="mt-2 text-sm text-neutral-400">Conversation transcripts and derived memory data are retained for the lifetime of your account. For details on how and why, see Section 7 (Data Retention).</p>
+            <p className="mt-2 text-sm text-[var(--text-muted)]">Conversation transcripts and derived memory data are retained for the lifetime of your account. For details on how and why, see Section 7 (Data Retention).</p>
           </SubSection>
 
           <SubSection title="3.3 Usage and Behavioural Data">
-            <ul className="ml-5 list-disc space-y-2">
+            <ul className="space-y-2">
               <li>Session length, return frequency, and content engagement signals</li>
               <li>Features accessed, screens visited, and session timestamps</li>
               <li>All behavioural data is linked to your account identity</li>
@@ -108,7 +98,7 @@ export default function PrivacyPolicyPage() {
           </SubSection>
 
           <SubSection title="3.4 Technical and Device Data">
-            <ul className="ml-5 list-disc space-y-2">
+            <ul className="space-y-2">
               <li>IP address, used to determine approximate geographic location (country or region level)</li>
               <li>Device model, operating system version, and app version</li>
               <li>Crash reports and diagnostic data, collected via Firebase SDK</li>
@@ -117,7 +107,7 @@ export default function PrivacyPolicyPage() {
           </SubSection>
 
           <SubSection title="3.5 User Feedback">
-            <ul className="ml-5 list-disc space-y-2">
+            <ul className="space-y-2">
               <li>Ratings, reactions, and written comments you provide on AI responses</li>
             </ul>
           </SubSection>
@@ -162,7 +152,7 @@ export default function PrivacyPolicyPage() {
 
         <Section id="s6" title="6. Data We Do Not Sell or Use for Advertising">
           <p>Source does not:</p>
-          <ul className="ml-5 list-disc space-y-2">
+          <ul className="space-y-2">
             <li>Sell your personal data to any third party</li>
             <li>Share your conversational data with advertisers or marketing platforms</li>
             <li>Use your personal data for behavioural advertising, targeted advertising, or profiling for commercial purposes</li>
@@ -188,7 +178,7 @@ export default function PrivacyPolicyPage() {
 
         <Section id="s8" title="8. Data Security">
           <p>We implement the following technical and organisational measures to protect your personal data:</p>
-          <ul className="ml-5 list-disc space-y-2">
+          <ul className="space-y-2">
             <li>Encryption in transit: All data transmitted between the Source app and our servers uses TLS/HTTPS encryption</li>
             <li>Encryption at rest: User data stored on Source servers is encrypted using AES-256</li>
             <li>Access controls: Conversation data is accessible internally only to personnel who require it for technical operations</li>
@@ -237,7 +227,7 @@ export default function PrivacyPolicyPage() {
           </SubSection>
 
           <SubSection title="11.2 What Our Personas Are and Are Not">
-            <ul className="ml-5 list-disc space-y-2">
+            <ul className="space-y-2">
               <li>Source personas ARE AI systems inspired by the documented teachings and philosophy of historical spiritual figures</li>
               <li>Source personas are NOT channels to, direct representations of, or communications from, any living or deceased individual</li>
               <li>Source does NOT claim that any persona constitutes contact with, or communication from, any spiritual master, living or deceased</li>
@@ -254,7 +244,7 @@ export default function PrivacyPolicyPage() {
           <p>This is one of the most important disclosures in this policy. Please read it carefully.</p>
 
           <SubSection title="12.1 What Source Is">
-            <ul className="ml-5 list-disc space-y-2">
+            <ul className="space-y-2">
               <li>A wellness and personal development platform</li>
               <li>A tool for spiritual guidance, contemplative reflection, and self-exploration rooted in ancient traditions</li>
               <li>A supplement to – not a replacement for – professional mental health care, medical treatment, or crisis intervention</li>
@@ -262,7 +252,7 @@ export default function PrivacyPolicyPage() {
           </SubSection>
 
           <SubSection title="12.2 What Source Is Not">
-            <ul className="ml-5 list-disc space-y-2">
+            <ul className="space-y-2">
               <li>Source is NOT a licensed mental health service, therapy, counselling, or psychiatric platform</li>
               <li>Source is NOT a medical device and does not diagnose, treat, cure, or prevent any medical or psychological condition</li>
               <li>Source is NOT a crisis intervention or emergency service</li>
@@ -278,7 +268,7 @@ export default function PrivacyPolicyPage() {
 
           <SubSection title="12.3 If You Are in Crisis">
             <p>Source does not monitor conversations in real time and cannot provide emergency intervention. If you are experiencing a mental health crisis, thoughts of self-harm, or any emergency, please contact:</p>
-            <ul className="ml-5 list-disc space-y-1 text-sm">
+            <ul className="space-y-1 text-sm">
               <li>Emergency services: 911 (USA), 112 (EU), 112 (India)</li>
               <li>988 Suicide and Crisis Lifeline (USA): Call or text 988</li>
               <li>Crisis Text Line (USA): Text HOME to 741741</li>
@@ -290,7 +280,7 @@ export default function PrivacyPolicyPage() {
 
         <Section id="s13" title="13. Children's Privacy">
           <p>Source is intended for users aged 13 and older. We do not knowingly collect personal data from children under the age of 13.</p>
-          <ul className="ml-5 list-disc space-y-2">
+          <ul className="space-y-2">
             <li>Users must confirm they are at least 13 years old at registration</li>
             <li>If we become aware that a user is under 13, their account and all associated data will be deleted promptly</li>
             <li>If you believe a child under 13 has created a Source account, please contact us at animesh@sourcemaverick.ai</li>
@@ -311,7 +301,7 @@ export default function PrivacyPolicyPage() {
           </SubSection>
 
           <SubSection title="14.3 Your CCPA / CPRA Rights">
-            <ul className="ml-5 list-disc space-y-2">
+            <ul className="space-y-2">
               <li>Right to Know: Request disclosure of the categories and specific pieces of personal information we have collected about you</li>
               <li>Right to Delete: Request deletion of your personal information, subject to limited legal exceptions</li>
               <li>Right to Correct: Request correction of inaccurate personal information</li>
@@ -345,7 +335,7 @@ export default function PrivacyPolicyPage() {
 
           <SubSection title="15.4 Your GDPR Rights">
             <p>In addition to the rights in Section 9, EU users have the right to:</p>
-            <ul className="ml-5 list-disc space-y-2">
+            <ul className="space-y-2">
               <li>Object to processing based on legitimate interests</li>
               <li>Restriction of processing in certain circumstances</li>
               <li>Lodge a complaint with your national data protection authority (DPA)</li>
@@ -370,7 +360,7 @@ export default function PrivacyPolicyPage() {
 
           <SubSection title="16.2 Grievance Officer">
             <p>In compliance with the DPDP Act, we have designated a Grievance Officer for Indian users:</p>
-            <ul className="ml-5 list-disc space-y-2">
+            <ul className="space-y-2">
               <li>Name: Animesh Anand</li>
               <li>Email: animesh@sourcemaverick.ai</li>
               <li>Response time: We will acknowledge grievances within 48 hours and resolve them within 30 days</li>
@@ -378,7 +368,7 @@ export default function PrivacyPolicyPage() {
           </SubSection>
 
           <SubSection title="16.3 Your Rights Under the DPDP Act">
-            <ul className="ml-5 list-disc space-y-2">
+            <ul className="space-y-2">
               <li>Right to access information about your personal data we hold</li>
               <li>Right to correction and erasure of inaccurate or incomplete data</li>
               <li>Right to grievance redressal through our Grievance Officer</li>
@@ -397,7 +387,7 @@ export default function PrivacyPolicyPage() {
 
         <Section id="s17" title="17. Changes to This Policy">
           <p>We may update this Privacy Policy from time to time. When we make material changes, we will:</p>
-          <ul className="ml-5 list-disc space-y-2">
+          <ul className="space-y-2">
             <li>Notify you through an in-app notification at least 30 days before the change takes effect</li>
             <li>Send a notification to the email address associated with your account</li>
             <li>Update the Effective Date at the top of this document</li>
@@ -408,7 +398,7 @@ export default function PrivacyPolicyPage() {
         <Section id="s18" title="18. Contact Us">
           <p>For any questions, concerns, or requests relating to this Privacy Policy or your personal data, please contact us:</p>
           <Table headers={["Method", "Details"]} rows={[
-            ["Privacy email", "animesh@sourcemaverick.ai"],
+            ["Privacy email", CONTACT_EMAIL],
             ["Mailing address", "Super Real Inc., 16192 Coastal Hwy. Lewes, DE 19958, USA"],
             ["In-app", "Settings – Privacy – Contact Us"],
             ["Response commitment", "We aim to respond within 30 days of receiving your request"]
@@ -416,111 +406,10 @@ export default function PrivacyPolicyPage() {
           <p className="mt-4">If you are not satisfied with our response, you have the right to escalate your complaint to the relevant data protection authority in your jurisdiction (see Sections 14–16 for jurisdiction-specific details).</p>
         </Section>
 
-        <footer className="mt-16 border-t border-neutral-800 pt-8 text-sm text-neutral-500">
-          <p>
-            Super Real Inc. · Source App · Privacy Policy · Version 1.0<br/>
-            © {new Date().getFullYear()} Super Real Inc. All rights reserved.
-          </p>
-        </footer>
-      </main>
-      <Footer />
-    </>
-  );
-}
-
-function Section({
-  id,
-  title,
-  children,
-}: {
-  id?: string;
-  title: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <section id={id} className="mb-10 scroll-mt-20">
-      <h2 className="mb-4 text-2xl font-light text-neutral-100">{title}</h2>
-      <div className="space-y-3 text-base leading-relaxed text-neutral-300">
-        {children}
-      </div>
-    </section>
-  );
-}
-
-function SubSection({
-  title,
-  children,
-}: {
-  title: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <div className="mb-4">
-      <h3 className="mb-2 text-lg font-medium text-neutral-200">{title}</h3>
-      <div className="space-y-2 text-base leading-relaxed text-neutral-300">
-        {children}
-      </div>
-    </div>
-  );
-}
-
-function Callout({
-  title,
-  children,
-}: {
-  title: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <div className="my-6 border-l-4 border-neutral-600 bg-neutral-900/50 p-4">
-      <p className="mb-2 font-medium text-neutral-200">{title}</p>
-      <div className="space-y-2 text-sm leading-relaxed text-neutral-300">
-        {children}
-      </div>
-    </div>
-  );
-}
-
-function Table({
-  headers,
-  rows,
-}: {
-  headers: string[];
-  rows: (string | React.ReactNode)[][];
-}) {
-  return (
-    <div className="my-4 overflow-x-auto">
-      <table className="w-full text-sm">
-        <thead>
-          <tr className="border-b border-neutral-700">
-            {headers.map((header) => (
-              <th
-                key={header}
-                className="bg-neutral-900 px-4 py-3 text-left font-medium text-neutral-100"
-              >
-                {header}
-              </th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {rows.map((row, idx) => (
-            <tr
-              key={idx}
-              className="border-b border-neutral-800 hover:bg-neutral-900/30"
-            >
-              {row.map((cell, cellIdx) => (
-                <td
-                  key={cellIdx}
-                  className="px-4 py-3 text-neutral-300"
-                >
-                  {cell}
-                </td>
-              ))}
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+        <Colophon>
+          <p>Super Real Inc. · Source App · Privacy Policy · Version 1.0<br/>
+            © {new Date().getFullYear()} Super Real Inc. All rights reserved.</p>
+        </Colophon>
+    </LegalPage>
   );
 }

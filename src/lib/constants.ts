@@ -3,9 +3,9 @@
 export const WAITLIST_BASELINE = 1121;
 
 export const navLinks = [
-  { label: "The Path", href: "#belong" },
-  { label: "The App", href: "#connect" },
-  { label: "Waitlist", href: "#waitlist" },
+  { label: "The Path", href: "/#belong" },
+  { label: "The App", href: "/#connect" },
+  { label: "Waitlist", href: "/#waitlist" },
 ];
 
 export const gururaj = {

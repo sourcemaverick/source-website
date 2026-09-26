@@ -366,3 +366,33 @@
     .cursor-glow { display: none; }
   }
 }
+
+/* ── Long-form legal / support pages ── */
+@layer components {
+  .legal-prose a:not([class]) {
+    color: var(--pink-light);
+    text-decoration: underline;
+    text-decoration-color: rgba(230, 83, 138, 0.35);
+    text-underline-offset: 3px;
+    transition: color 0.3s var(--ease), text-decoration-color 0.3s var(--ease);
+  }
+  .legal-prose a:not([class]):hover {
+    color: #fff;
+    text-decoration-color: var(--pink);
+  }
+  .legal-prose strong {
+    color: var(--text-primary);
+    font-weight: 500;
+  }
+  .legal-prose ul,
+  .legal-prose ol {
+    padding-left: 1.25rem;
+  }
+  .legal-prose ul { list-style: disc; }
+  .legal-prose ol { list-style: decimal; }
+  .legal-prose li::marker {
+    color: var(--gold);
+    font-size: 0.9em;
+  }
+  .legal-prose em { color: var(--text-primary); }
+}

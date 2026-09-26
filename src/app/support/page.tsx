@@ -1,70 +1,88 @@
 import type { Metadata } from "next";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import LegalPage, { Callout, Colophon, Section } from "@/components/legal/LegalPage";
 
 export const metadata: Metadata = {
   title: "Support — Source",
   description: "Get support for your Source app questions and issues.",
 };
 
+const CONTACT_NAME = "Animesh Anand";
+const CONTACT_TITLE = "CEO, Source";
+const CONTACT_EMAIL = "animesh@sourcemaverick.ai";
+
 export default function SupportPage() {
   return (
-    <>
-      <Navbar />
-      <main className="relative mx-auto max-w-3xl px-6 py-16 text-neutral-200 sm:py-24">
-        <header className="mb-16">
-          <p className="font-mono text-xs uppercase tracking-[0.2em] text-neutral-400">
-            Source
-          </p>
-          <h1 className="mt-2 text-4xl font-light tracking-tight text-neutral-100 sm:text-5xl">
-            Support
-          </h1>
-          <p className="mt-4 text-sm text-neutral-400">
-            We're here to help
-          </p>
-        </header>
+    <LegalPage
+      label="Support"
+      title="We're here to help"
+      meta={<p>Questions, issues, or feedback about the Source app</p>}
+    >
+      <div className="glass-card mb-12 p-8 sm:p-10">
+        <p className="label mb-4">Reach us directly</p>
+        <p className="mb-8 text-[15px] font-light leading-[1.85] text-[var(--text-secondary)]">
+          For any question, issue, or support query about the Source app, write to us. A real
+          person reads every message.
+        </p>
 
-        <section className="mb-12 rounded-lg border border-neutral-800 bg-neutral-900/50 p-8">
-          <h2 className="mb-6 text-2xl font-light text-neutral-100">
-            How can we help you?
-          </h2>
+        <div className="warm-panel p-6 sm:p-7">
+          <dl className="grid gap-5 sm:grid-cols-[auto_1fr] sm:gap-x-10 sm:gap-y-4">
+            <dt className="text-[11px] font-medium uppercase tracking-[0.25em] text-[var(--text-muted)] sm:pt-1">
+              Contact
+            </dt>
+            <dd className="font-serif text-xl text-[var(--text-primary)]">{CONTACT_NAME}</dd>
 
-          <p className="mb-6 text-base leading-relaxed text-neutral-300">
-            For any questions, issues, or support queries about the Source app, please reach out directly to:
-          </p>
+            <dt className="text-[11px] font-medium uppercase tracking-[0.25em] text-[var(--text-muted)] sm:pt-1">
+              Title
+            </dt>
+            <dd className="text-[15px] font-light text-[var(--text-secondary)]">{CONTACT_TITLE}</dd>
 
-          <div className="rounded-lg bg-neutral-900 p-6">
-            <p className="mb-1 text-sm text-neutral-400">Contact</p>
-            <p className="mb-4 text-lg font-medium text-neutral-100">
-              Animesh Anand
-            </p>
-            <p className="mb-1 text-sm text-neutral-400">Title</p>
-            <p className="mb-4 text-base text-neutral-200">
-              CEO of Source
-            </p>
-            <p className="mb-1 text-sm text-neutral-400">Email</p>
-            <p>
-              <a
-                href="mailto:animesh@sourcemaverick.ai"
-                className="text-blue-400 underline hover:text-blue-300"
-              >
-                animesh@sourcemaverick.ai
+            <dt className="text-[11px] font-medium uppercase tracking-[0.25em] text-[var(--text-muted)] sm:pt-1">
+              Email
+            </dt>
+            <dd>
+              <a href={`mailto:${CONTACT_EMAIL}`} className="gold-text text-[15px] font-medium">
+                {CONTACT_EMAIL}
               </a>
-            </p>
-          </div>
+            </dd>
+          </dl>
+        </div>
 
-          <p className="mt-6 text-sm text-neutral-400">
+        <div className="mt-8 flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <p className="text-[13px] font-light tracking-wide text-[var(--text-muted)]">
             We typically respond to all support inquiries within 48 hours.
           </p>
-        </section>
+          <a
+            href={`mailto:${CONTACT_EMAIL}?subject=Source%20support`}
+            className="btn-gold btn-shine rounded-full px-7 py-3 text-[12px] uppercase tracking-[0.16em]"
+          >
+            Email support
+          </a>
+        </div>
+      </div>
 
-        <footer className="border-t border-neutral-800 pt-8 text-sm text-neutral-500">
-          <p>
-            © {new Date().getFullYear()} Super Real Inc. All rights reserved.
-          </p>
-        </footer>
-      </main>
-      <Footer />
-    </>
+      <Section title="Before you write">
+        <Callout title="Helpful to include">
+          <ul className="space-y-1">
+            <li>The device and OS version you are using (for example, iPhone 15, iOS 18).</li>
+            <li>The email address associated with your Source account.</li>
+            <li>What you were doing when the problem happened, and what you expected instead.</li>
+            <li>A screenshot or screen recording, if you have one.</li>
+          </ul>
+        </Callout>
+      </Section>
+
+      <Section title="Common requests">
+        <p>
+          Want to delete your account and data? See{" "}
+          <a href="/delete-account">Delete your account</a>. For how we handle your information,
+          read our <a href="/privacy">Privacy Policy</a>. For the rules of using the platform, see
+          the <a href="/terms">Terms and Conditions</a>.
+        </p>
+      </Section>
+
+      <Colophon>
+        <p>© {new Date().getFullYear()} Super Real Inc. All rights reserved.</p>
+      </Colophon>
+    </LegalPage>
   );
 }
