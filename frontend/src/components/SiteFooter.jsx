@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Instagram, Youtube } from "lucide-react";
 
 // Simple SVGs for TikTok and X since lucide's may not exist / to keep thin-line consistency
@@ -16,6 +17,12 @@ const XIcon = (props) => (
   </svg>
 );
 
+const legalLinks = [
+  { label: "Terms of Use", to: "/terms", testId: "footer-terms" },
+  { label: "Privacy Policy", to: "/privacy", testId: "footer-privacy" },
+  { label: "Support", to: "/support", testId: "footer-support" },
+];
+
 const socials = [
   { name: "Instagram", Icon: Instagram, href: "#", testId: "social-instagram" },
   { name: "TikTok", Icon: TikTokIcon, href: "#", testId: "social-tiktok" },
@@ -30,31 +37,28 @@ export const SiteFooter = () => (
   >
     <div className="mx-auto max-w-6xl">
       <div className="flex flex-col items-start gap-12 border-t border-white/10 pt-14 md:flex-row md:items-center md:justify-between md:gap-8">
-        <a href="/" className="flex items-baseline gap-2" data-testid="footer-brand">
+        <Link to="/" className="flex items-baseline gap-2" data-testid="footer-brand">
           <span className="font-mystic text-xl font-medium tracking-wide text-white">
             The Source
           </span>
           <span className="font-ui text-[9px] uppercase tracking-[0.35em] text-white/35">
             Find Yourself
           </span>
-        </a>
+        </Link>
 
         <div className="flex flex-wrap items-center gap-x-8 gap-y-3">
-          <a
-            href="#"
-            data-testid="footer-terms"
-            className="nav-link font-ui text-[10px] uppercase tracking-[0.3em]"
-          >
-            Terms of Use
-          </a>
-          <span className="text-white/15">·</span>
-          <a
-            href="#"
-            data-testid="footer-privacy"
-            className="nav-link font-ui text-[10px] uppercase tracking-[0.3em]"
-          >
-            Privacy Policy
-          </a>
+          {legalLinks.map((l, i) => (
+            <span key={l.to} className="flex items-center gap-x-8">
+              {i > 0 && <span className="text-white/15">·</span>}
+              <Link
+                to={l.to}
+                data-testid={l.testId}
+                className="nav-link font-ui text-[10px] uppercase tracking-[0.3em]"
+              >
+                {l.label}
+              </Link>
+            </span>
+          ))}
         </div>
 
         <div className="flex items-center gap-5">

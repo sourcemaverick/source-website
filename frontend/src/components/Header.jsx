@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import { useLocation, useNavigate } from "react-router-dom";
 import { smoothScrollTo, smoothScrollToTop } from "@/components/SmoothScroll";
 
 const links = [
@@ -12,8 +13,11 @@ const downloadLink = { label: "Download", target: '[data-testid="download-sectio
 
 const scrollTo = (sel) => smoothScrollTo(sel);
 
-export const Header = () => {
+export const Header = ({ delay = 2.1 }) => {
   const [open, setOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const onHome = location.pathname === "/";
 
   // Lock scroll while menu is open
   useEffect(() => {
@@ -31,6 +35,11 @@ export const Header = () => {
 
   const go = (target) => () => {
     setOpen(false);
+    if (!onHome) {
+      // Sub-page: go home first; Landing scrolls to the target once mounted.
+      navigate("/", { state: { scrollTo: target } });
+      return;
+    }
     // Wait for the overlay to unlock scroll before scrolling
     setTimeout(() => scrollTo(target), 60);
   };
@@ -41,7 +50,7 @@ export const Header = () => {
         data-testid="site-header"
         initial={{ opacity: 0, y: -18 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 2.1, duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ delay, duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
         className="fixed top-0 left-0 right-0 z-40 px-4 pt-4 md:px-12 md:pt-8"
       >
         <div className="glass-deep mx-auto flex max-w-6xl items-center justify-between rounded-full px-5 py-3.5 md:px-10 md:py-4">
@@ -52,7 +61,8 @@ export const Header = () => {
             onClick={(e) => {
               e.preventDefault();
               setOpen(false);
-              smoothScrollToTop();
+              if (onHome) smoothScrollToTop();
+              else navigate("/");
             }}
           >
             <span className="font-mystic text-lg font-medium tracking-wide text-white md:text-2xl">
