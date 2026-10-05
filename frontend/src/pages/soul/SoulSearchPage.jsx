@@ -88,7 +88,7 @@ export default function SoulSearchPage() {
             <div className="mt-8 space-y-7">
               {transcript.map((t, i) => t.who === "guide"
                 ? <GuideLine key={i} size={i === transcript.length - 1 || (i === transcript.length - 2 && transcript[i + 1].who === "guide") ? "lg" : "md"} delay={0}>{t.text}</GuideLine>
-                : <YouLine key={i}>{t.kind === "right" ? "Right." : t.kind === "not_quite" ? "Not quite." : t.text}</YouLine>
+                : <YouLine key={i}>{t.kind === "right" ? "Right." : t.kind === "not_quite" ? ("Not quite." + ((t.text || "").replace(/^not quite\.?\s*/i, "") ? " " + (t.text || "").replace(/^not quite\.?\s*/i, "") : "")) : t.text}</YouLine>
               )}
               {busy && (
                 <motion.p initial={{ opacity: 0 }} animate={{ opacity: [0.3, 0.8, 0.3] }} transition={{ repeat: Infinity, duration: 1.8 }} className="font-mystic text-2xl text-white/40">…</motion.p>
