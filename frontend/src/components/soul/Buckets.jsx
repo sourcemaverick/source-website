@@ -43,8 +43,8 @@ export default function Buckets({ state }) {
     <aside data-testid="soul-buckets" className="space-y-8 lg:sticky lg:top-32">
       {(sit.question || sit.raw) && (
         <section>
-          <h3 className="font-ui text-[10px] uppercase tracking-[0.3em] text-[color:var(--gold)]">The question</h3>
-          <p className="mt-3 font-mystic text-lg leading-snug text-white/90 md:text-xl">{sit.question || sit.raw}</p>
+          <h3 className="font-ui text-[10px] uppercase tracking-[0.3em] text-[color:var(--gold)]">{sit.refined && sit.question ? "The question" : "What you brought"}</h3>
+          <p className="mt-3 font-mystic text-lg leading-snug text-white/90 md:text-xl">{(sit.refined && sit.question) || sit.raw || sit.question}</p>
           {sit.subjects && sit.subjects.length > 0 && (
             <ul className="mt-3 space-y-1">
               {sit.subjects.map((s) => (
