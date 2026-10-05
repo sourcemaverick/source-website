@@ -14,14 +14,21 @@ function fmt(iso) {
 export default function SoulSelfPage() {
   const { user, ready } = useAuthUser();
   const [persona, setPersona] = useState(undefined);
+  const [error, setError] = useState("");
   useEffect(() => {
     if (!ready || !user) return;
-    getPersona().then((r) => setPersona(r.persona)).catch((e) => setPersona(e instanceof ApiError ? null : null));
+    getPersona().then((r) => setPersona(r.persona)).catch((e) => {
+      if (e instanceof ApiError && e.code === "consent_required") setError("consent");
+      else setError("Could not open this. Try again in a moment.");
+      setPersona(null);
+    });
   }, [ready, user]);
 
   if (!ready) return <SoulShell title="Under everything"><Quiet>…</Quiet></SoulShell>;
   if (!user) return <SoulShell title="Under everything"><Link to="/soul-search" className="font-ui text-xs text-[color:var(--gold)] underline underline-offset-4">Sign in first</Link></SoulShell>;
   if (persona === undefined) return <SoulShell title="Under everything"><Quiet>Opening…</Quiet></SoulShell>;
+  if (error === "consent") return <SoulShell title="Under everything"><Quiet><Link to="/soul-search" className="text-[color:var(--gold)] underline underline-offset-4">Begin here</Link> first.</Quiet></SoulShell>;
+  if (error) return <SoulShell title="Under everything"><Quiet>{error}</Quiet></SoulShell>;
   if (!persona) return <SoulShell title="Under everything"><Quiet>Nothing yet. <Link to="/soul-search" className="text-[color:var(--gold)] underline underline-offset-4">Begin a search</Link> and this fills in.</Quiet></SoulShell>;
 
   return (

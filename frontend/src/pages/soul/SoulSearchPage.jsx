@@ -103,14 +103,15 @@ export default function SoulSearchPage() {
                   ) : (
                     <form onSubmit={(e) => { e.preventDefault(); if (!text.trim()) return; send(closer ? "not_quite" : "text", text.trim()); }}>
                       {w.question && w.question.long && !closer ? (
-                        <textarea data-testid="answer-long" autoFocus rows={4} className={area} value={text} onChange={(e) => setText(e.target.value)} placeholder="Take the space you need" />
+                        <textarea data-testid="answer-long" autoFocus rows={4} className={area} value={text} onChange={(e) => setText(e.target.value)} placeholder="Take the space you need"
+                          onKeyDown={(e) => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); if (text.trim()) send(closer ? "not_quite" : "text", text.trim()); } }} />
                       ) : (
                         <input data-testid="answer" autoFocus className={field} value={text} onChange={(e) => setText(e.target.value)} placeholder={closer ? "What is closer" : "One line is enough"} />
                       )}
                       <div className="mt-3 flex items-center gap-3">
-                        <Chip testId="answer-send" primary disabled={!text.trim()}>{closer ? "Say" : "Send"}</Chip>
+                        <Chip testId="answer-send" type="submit" primary disabled={!text.trim()}>{closer ? "Say" : "Send"}</Chip>
                         {closer && <Chip testId="closer-cancel" onClick={() => setCloser(false)}>Back</Chip>}
-                        <Quiet>Enter sends</Quiet>
+                        <Quiet>{w.question && w.question.long && !closer ? "Enter sends, Shift and Enter for a new line" : "Enter sends"}</Quiet>
                       </div>
                     </form>
                   )}

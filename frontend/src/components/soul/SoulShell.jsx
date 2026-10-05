@@ -69,9 +69,9 @@ export const YouLine = ({ children, testId }) => (
   </motion.p>
 );
 
-export const Chip = ({ children, onClick, primary = false, disabled = false, testId }) => (
+export const Chip = ({ children, onClick, primary = false, disabled = false, testId, type = "button" }) => (
   <button
-    type="button"
+    type={type}
     data-testid={testId}
     onClick={onClick}
     disabled={disabled}
