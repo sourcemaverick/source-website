@@ -1,9 +1,14 @@
 # Soul Search is its own app, deployed on its own cadence to Firebase
 # Hosting, and served here under /soulsearch. The prefix is kept on both
 # sides so one set of asset paths works in either place.
-# This must stay ABOVE the catch-all, which would otherwise answer every
-# /soulsearch request with this site's index.html.
-/soulsearch       /soulsearch/                                      301
+#
+# Both rules proxy (200). A 301 from /soulsearch to /soulsearch/ loops,
+# because Netlify normalises the trailing slash before matching and the
+# rule then redirects to itself.
+#
+# These must stay ABOVE the catch-all, which would otherwise answer every
+# /soulsearch request with this site's own index.html.
 /soulsearch/*     https://soul-search-chat.web.app/soulsearch/:splat  200
+/soulsearch       https://soul-search-chat.web.app/soulsearch/        200
 
 /*    /index.html   200
