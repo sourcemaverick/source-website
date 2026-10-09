@@ -97,7 +97,7 @@ export const Hero = () => (
       >
         <a
           data-testid="hero-soulsearch"
-          href="/soulsearch"
+          href="/soulsearch/"   /* the slash matters: the app's router is mounted at /soulsearch/ and renders nothing without it */
           className="group inline-flex items-center gap-2.5 rounded-full border border-white/20 px-5 py-2.5 font-ui text-[10px] uppercase tracking-[0.28em] text-white/70 transition hover:border-white/45 hover:text-white md:text-[11px]"
         >
           <span className="relative flex h-1.5 w-1.5">
