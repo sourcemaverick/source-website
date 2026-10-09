@@ -86,6 +86,27 @@ export const Hero = () => (
           Tell me more
         </button>
       </motion.div>
+
+      {/* Soul Search, just launched. Quieter than the main call to action:
+          it is a second door, not a competing one. */}
+      <motion.div
+        initial={{ opacity: 0, y: 14 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 3.9, duration: 1.2, ease }}
+        className="mt-5 md:mt-6"
+      >
+        <a
+          data-testid="hero-soulsearch"
+          href="/soulsearch"
+          className="group inline-flex items-center gap-2.5 rounded-full border border-white/20 px-5 py-2.5 font-ui text-[10px] uppercase tracking-[0.28em] text-white/70 transition hover:border-white/45 hover:text-white md:text-[11px]"
+        >
+          <span className="relative flex h-1.5 w-1.5">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-amber-300/70" />
+            <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-amber-300" />
+          </span>
+          New &middot; Soul Search
+        </a>
+      </motion.div>
     </div>
 
     <FooterStrip />
