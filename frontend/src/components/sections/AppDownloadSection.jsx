@@ -59,7 +59,7 @@ export const AppDownloadSection = () => (
         />
         <Badge
           testId="download-playstore"
-          href="https://play.google.com/apps/testing/com.superreal.source.android"
+          href="https://play.google.com/store/apps/details?id=com.superreal.source.android&hl=en_IN"
           sub="Get it on"
           label="Google Play"
           icon={
