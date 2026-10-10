@@ -48,7 +48,7 @@ export const AppDownloadSection = () => (
       >
         <Badge
           testId="download-appstore"
-          href="https://apps.apple.com/in/app/source-inner-transformation/id6761737790"
+          href="https://apps.apple.com/app/source-inner-transformation/id6761737790"
           sub="Download on the"
           label="App Store"
           icon={
@@ -59,7 +59,7 @@ export const AppDownloadSection = () => (
         />
         <Badge
           testId="download-playstore"
-          href="https://play.google.com/store/apps/details?id=com.superreal.source.android&hl=en_IN"
+          href="https://play.google.com/store/apps/details?id=com.superreal.source.android"
           sub="Get it on"
           label="Google Play"
           icon={
