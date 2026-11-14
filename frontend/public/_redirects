@@ -11,4 +11,10 @@
 /soulsearch/*     https://soul-search-chat.web.app/soulsearch/:splat  200
 /soulsearch       https://soul-search-chat.web.app/soulsearch/        200
 
+# Brainstorm by The Source, the same way: its pages on Firebase Hosting under
+# /brainstorm. The pages talk to their own server (Cloud Run) directly, since
+# live replies need a WebSocket, which this proxy can't carry.
+/brainstorm/*     https://brainstorm-source.web.app/brainstorm/:splat  200
+/brainstorm       https://brainstorm-source.web.app/brainstorm/        200
+
 /*    /index.html   200
