@@ -17,4 +17,9 @@
 /brainstorm/*     https://brainstorm-source.web.app/brainstorm/:splat  200
 /brainstorm       https://brainstorm-source.web.app/brainstorm/        200
 
+# Harmonize by The Source, the same way: its pages on Firebase Hosting under /harmonizer; the pages talk to
+# their own server (Cloud Run) directly, for the live socket this proxy cannot carry.
+/harmonizer/*     https://harmonizer-source.web.app/harmonizer/:splat  200
+/harmonizer       https://harmonizer-source.web.app/harmonizer/        200
+
 /*    /index.html   200
